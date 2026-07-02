@@ -3,1049 +3,712 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dr. Manish Bansal | Consultant Orthopaedic &amp; Arthroscopy Surgeon</title>
-    <meta name="description" content="Precision in Motion: Official MedTech website of Dr. Manish Bansal, Consultant Orthopaedic &amp; Arthroscopy Surgeon, Jalandhar, Punjab. Trained in UK &amp; Australia.">
-    <meta name="keywords" content="Dr Manish Bansal, Joint Specialist Jalandhar, Arthroscopy Surgeon Punjab, Knee Surgeon, Shoulder Surgeon, Sports Injury Doctor, Orthopaedic Surgeon India">
-    
-    <!-- Open Graph Tags -->
-    <meta property="og:title" content="Dr. Manish Bansal | Orthopaedic &amp; Arthroscopy Surgeon">
-    <meta property="og:description" content="Consultant Orthopaedic &amp; Sports Injury Surgeon in Jalandhar. Precision medical and arthroscopic care.">
-    <meta property="og:type" content="website">
-
-    <!-- Stylesheet -->
-    <link rel="stylesheet" href="styles.css">
+    <title>Dr. Sarah Jenkins, MD | Premium Family Medicine & Wellness Specialist</title>
+    <meta name="description" content="Welcome to the practice of Dr. Sarah Jenkins, MD. Offering personalized family medicine, preventive care, and wellness consulting in a warm, patient-first clinic. Book your consultation today.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Header Navigation -->
-    <header id="header">
-        <div class="nav-container">
-            <a href="#home" class="logo">
-                <span class="logo-main">Dr. Manish Bansal</span>
-                <span class="logo-sub">Precision Orthopaedics</span>
+    <!-- Header & Navigation -->
+    <header class="site-header" id="site-header">
+        <div class="container header-container">
+            <a href="#" class="logo" id="logo-link">
+                <span class="logo-prefix">Dr. Sarah</span>
+                <span class="logo-suffix">Jenkins</span>
             </a>
             
-            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Navigation Menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            
-            <nav class="nav-menu" id="navMenu">
-                <a href="#home" class="nav-link active">Home</a>
-                <a href="#about" class="nav-link">About</a>
-                <a href="#specialties-map" class="nav-link">Anatomical Map</a>
-                <a href="#rom" class="nav-link">ROM Simulator</a>
-                <a href="#stepper" class="nav-link">Precision Guide</a>
-                <a href="#specialties" class="nav-link">Specialties</a>
-                <a href="#hours" class="nav-link">Hours</a>
-                <a href="#book" class="nav-link">Book Appointment</a>
+            <nav class="desktop-nav" aria-label="Main Navigation">
+                <a href="#about" class="nav-link">Meet Dr. Sarah</a>
+                <a href="#services" class="nav-link">Our Services</a>
+                <a href="#quiz-section" class="nav-link">Wellness Quiz</a>
+                <a href="#testimonials" class="nav-link">Reviews</a>
+                <a href="#faqs" class="nav-link">FAQs</a>
+                <a href="#booking" class="btn btn-primary nav-cta">Book Consultation</a>
             </nav>
+
+            <button class="mobile-menu-toggle" id="menu-toggle" aria-label="Toggle Navigation Menu">
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+            </button>
         </div>
     </header>
 
-    <!-- Canvas for Three.js 3D Background & Joint Renders -->
-    <canvas id="three-canvas"></canvas>
+    <!-- Mobile Drawer Menu -->
+    <div class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
+        <nav class="mobile-nav" aria-label="Mobile Navigation">
+            <a href="#about" class="mobile-nav-link">Meet Dr. Sarah</a>
+            <a href="#services" class="mobile-nav-link">Our Services</a>
+            <a href="#quiz-section" class="mobile-nav-link">Wellness Quiz</a>
+            <a href="#testimonials" class="mobile-nav-link">Reviews</a>
+            <a href="#faqs" class="mobile-nav-link">FAQs</a>
+            <a href="#booking" class="btn btn-primary mobile-nav-cta">Book Consultation</a>
+        </nav>
+    </div>
 
-    <main>
-        <!-- Hero Section -->
-        <section id="home" class="hero">
-            <div class="container hero-grid">
-                <div class="hero-content fade-in">
-                    <div class="badge-capsule hero-badge">
-                        <span class="badge-pulse-dot"></span>
-                        <span>OPD ACTIVE &bull; JALANDHAR</span>
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <div class="badge">Board Certified Family Physician</div>
+                <h1 class="hero-title">Your Health. Your Life. <br><span class="highlight-text">A Doctor Who Listens.</span></h1>
+                <p class="hero-subtitle">
+                    Dr. Sarah Jenkins offers premium, personalized family medicine and wellness consulting. Experience modern medical science delivered with a dedicated, human touch in a calming environment.
+                </p>
+                <div class="hero-ctas">
+                    <a href="#booking" class="btn btn-primary">Book Consultation</a>
+                    <a href="#services" class="btn btn-secondary">Explore Services</a>
+                </div>
+            </div>
+            
+            <div class="hero-visual">
+                <!-- Premium Organic-Shaped Frame for Doctor Portrait -->
+                <div class="image-frame-container">
+                    <div class="organic-frame-blob"></div>
+                    <img src="assets/doctor-profile.png" alt="Dr. Sarah Jenkins, MD" class="hero-doctor-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section" id="stats">
+        <div class="container stats-container">
+            <div class="stat-card">
+                <h2 class="stat-number" data-target="12">0</h2>
+                <p class="stat-label">Years of Experience</p>
+            </div>
+            <div class="stat-card">
+                <h2 class="stat-number" data-target="5000">0</h2>
+                <p class="stat-label">Happy Patients</p>
+            </div>
+            <div class="stat-card">
+                <h2 class="stat-number" data-target="99">0</h2>
+                <p class="stat-label">Patient Satisfaction Rate (%)</p>
+            </div>
+            <div class="stat-card">
+                <h2 class="stat-number" data-target="100">0</h2>
+                <p class="stat-label">Attentive Listening (%)</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Meet Dr. Sarah / Philosophy of Care -->
+    <section class="about-section" id="about">
+        <div class="container about-container">
+            <div class="about-visual">
+                <div class="about-image-wrapper">
+                    <img src="assets/clinic-interior.png" alt="Dr. Sarah Jenkins Clinic Consultation Space" class="clinic-img">
+                    <div class="quote-overlay">
+                        <svg class="quote-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M11.19 12.015C10.02 12.18 9 13.065 9 14.28V18.15C9 19.17 9.825 20 10.845 20H14.16C15.18 20 16.005 19.175 16.005 18.15V14.595C16.005 11.235 17.58 9 20.31 9C20.67 9 21.005 8.91 21.005 8.52V5.595C21.005 5.175 20.655 4.905 20.25 4.905C15.06 4.905 11.4 8.01 11.19 12.015ZM2.19 12.015C1.02 12.18 0 13.065 0 14.28V18.15C0 19.17 0.825 20 1.845 20H5.16C6.18 20 7.005 19.175 7.005 18.15V14.595C7.005 11.235 8.58 9 11.31 9C11.67 9 12.005 8.91 12.005 8.52V5.595C12.005 5.175 11.655 4.905 11.25 4.905C6.06 4.905 2.4 8.01 2.19 12.015Z" fill="currentColor"/>
+                        </svg>
+                        <p class="quote-text">
+                            I believe healing begins the moment a doctor truly listens. My goal is to build long-term partnerships with patients so they feel secure, informed, and genuinely cared for.
+                        </p>
                     </div>
-                    <h1 class="hero-title">Precision in <span class="highlight">Motion</span></h1>
-                    <p class="hero-subtitle">Consultant Orthopaedic, Arthroscopy &amp; Sports Injury Surgeon</p>
-                    <p class="hero-description">
-                        Restoring joint function and active lifestyles through advanced arthroscopic keyhole surgery. Trained in world-renowned centres across the United Kingdom and Australia.
+                </div>
+            </div>
+            
+            <div class="about-content">
+                <div class="section-badge">About Dr. Sarah</div>
+                <h2 class="section-title">Compassionate Medicine for Individual Lives</h2>
+                <p class="about-text-lead">
+                    Dr. Sarah Jenkins is a double board-certified physician with over a decade of hands-on clinical experience. Frustrated by the rushed nature of corporate medical mills, she established her boutique solo practice to deliver the quality of attention every patient deserves.
+                </p>
+                <p class="about-text-body">
+                    By limiting her practice capacity, Dr. Jenkins ensures she has the time to understand your medical history, your lifestyle, and your individual concerns. Whether navigating chronic issues, seeking cosmetic health advice, or mapping out preventive wellness, you receive direct, unhurried guidance from your doctor.
+                </p>
+                <div class="credentials-grid">
+                    <div class="credential-item">
+                        <span class="cred-icon">🎓</span>
+                        <div>
+                            <strong>MD from Stanford University</strong>
+                            <p>Specialization in Family Medicine</p>
+                        </div>
+                    </div>
+                    <div class="credential-item">
+                        <span class="cred-icon">📜</span>
+                        <div>
+                            <strong>ABFM Board Certified</strong>
+                            <p>American Board of Family Medicine</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="signature-block">
+                    <span class="signature-name">Dr. Sarah Jenkins, MD</span>
+                    <p class="signature-title">Founder & Primary Care Physician</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Grid Section -->
+    <section class="services-section" id="services">
+        <div class="container">
+            <div class="section-header-center">
+                <div class="section-badge">What We Offer</div>
+                <h2 class="section-title">Comprehensive Wellness Services</h2>
+                <p class="section-subtitle">
+                    Discover personalized services designed around your long-term health and vitality.
+                </p>
+            </div>
+            
+            <div class="services-grid">
+                <!-- Card 1 -->
+                <div class="service-card">
+                    <div class="service-icon-wrapper">
+                        <svg class="service-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-card-title">Comprehensive Primary Care</h3>
+                    <p class="service-card-desc">
+                        Full-spectrum family medicine, routine exams, diagnosis and management of chronic diseases, acute illness visits, and dedicated coordinates for specialist care.
                     </p>
-                    <div class="hero-cta">
-                        <a href="#book" class="btn btn-primary" id="ctaConsultation">Book Consultation &rarr;</a>
-                        <a href="#about" class="btn btn-outline" id="ctaExplore">Explore Bio</a>
-                    </div>
-
-                    <!-- Hero Trust Badges -->
-                    <div class="hero-trust-row">
-                        <div class="hero-trust-item">
-                            <span class="trust-number">20+</span>
-                            <span class="trust-label">Years</span>
-                        </div>
-                        <div class="hero-trust-divider"></div>
-                        <div class="hero-trust-item">
-                            <span class="trust-number">5000+</span>
-                            <span class="trust-label">Surgeries</span>
-                        </div>
-                        <div class="hero-trust-divider"></div>
-                        <div class="hero-trust-item">
-                            <span class="trust-number">#1</span>
-                            <span class="trust-label">Punjab</span>
-                        </div>
-                    </div>
+                    <ul class="service-card-bullets">
+                        <li>Annual Physicals</li>
+                        <li>Chronic Disease Management</li>
+                        <li>Acute Care Visits</li>
+                    </ul>
                 </div>
 
-                <!-- Hero Doctor Visual Panel -->
-                <div class="hero-visual-panel fade-in delay-2">
-                    <div class="hero-doctor-frame">
-                        <img src="dr_portrait.png" alt="Dr. Manish Bansal - Consultant Orthopaedic Surgeon" class="hero-doctor-img">
-                        <div class="hero-doctor-overlay">
-                            <div class="hero-doctor-name-badge">
-                                <strong>Dr. Manish Bansal</strong>
-                                <span>MS Orthopaedics &bull; Fellowship UK &amp; Australia</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Floating skill chips -->
-                    <div class="hero-chip chip-top-right">Arthroscopy Expert</div>
-                    <div class="hero-chip chip-bottom-left">Joint Reconstruction</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- About Section (Medico Inspired layout) -->
-        <section id="about" class="about">
-            <div class="container">
-                <h2 class="fade-in">Restoring Life's <span class="highlight">Fluidity</span></h2>
-                <div class="about-grid">
-                    
-                    <div class="about-visual-container fade-in delay-1">
-                        <!-- Dot matrices behind arch -->
-                        <div class="dot-matrix pos-left"></div>
-                        <div class="dot-matrix pos-right"></div>
-                        
-                        <!-- Arch Frame Doctor Visual -->
-                        <div class="about-image-arch">
-                            <img src="dr_portrait.png" alt="Dr. Manish Bansal" style="width: 100%; height: 100%; object-fit: cover;">
-                        </div>
-
-                        <!-- Floating trust overlay cards -->
-                        <div class="floating-overlay-card card-right">
-                            <div class="floating-card-icon">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <circle cx="12" cy="12" r="10"></circle>
-                                    <line x1="2" y1="12" x2="22" y2="12"></line>
-                                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-                                </svg>
-                            </div>
-                            <div class="floating-card-text">
-                                <h5>UK &amp; Australia</h5>
-                                <p>Fellowship Trained</p>
-                            </div>
-                        </div>
-
-                        <div class="floating-overlay-card card-left">
-                            <div class="floating-card-icon">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                                </svg>
-                            </div>
-                            <div class="floating-card-text">
-                                <h5>5000+ Surgeries</h5>
-                                <p>Proven Success Rate</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="about-content fade-in delay-2">
-                        <h3>Dr. Manish Bansal</h3>
-                        <p class="lead">Trained at world-renowned centres in the UK, Australia &amp; India since 2000.</p>
-                        <p>Dr. Manish Bansal is a pioneering Orthopaedic Surgeon specializing in advanced keyhole arthroscopy procedures and joint reconstructions. With a strong track record spanning over two decades, he dedicates his practice to restoring optimal range of motion and joint stability for active adults, senior patients, and elite athletes alike.</p>
-                        <p>Having completed advanced fellowships in joint reconstructions in the UK and sports injury care in Australia, Dr. Bansal employs global gold-standard procedures. He frequently contributes as a panelist and guest lecturer at national orthopaedic and arthroscopy forums, sharing developments in micro-surgical repair.</p>
-
-                        <!-- Stats count-up containers -->
-                        <div class="about-stats">
-                            <div class="stat-item">
-                                <div class="stat-num-container"><span class="stat-count" data-count-to="20">0</span>+</div>
-                                <h4>Years Practice</h4>
-                                <p>Surgical Experience</p>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-num-container"><span class="stat-count" data-count-to="5000">0</span>+</div>
-                                <h4>Surgeries</h4>
-                                <p>Completed Repairs</p>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-num-container"><span class="stat-count" data-count-to="99">0</span>%</div>
-                                <h4>Patient Trust</h4>
-                                <p>Referral Rating</p>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- Split Screen Anatomical Map Section -->
-        <section id="specialties-map" class="anatomical-map-section">
-            <div class="map-split-container">
-                
-                <!-- Left panel: Sticky Anatomical SVG -->
-                <div class="map-sticky-panel">
-                    <h3 style="margin-bottom: 2rem; font-size: 1.5rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-glow);">Anatomical Index</h3>
-                    <div class="skeleton-svg-wrapper">
-                        <!-- High-tech clean joint/skeletal vector diagram -->
-                        <svg viewBox="0 0 200 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <!-- Body central guide line -->
-                            <line x1="100" y1="20" x2="100" y2="380" stroke="#0ea5e9" stroke-width="0.5" stroke-dasharray="5 5" opacity="0.3" />
-                            
-                            <!-- Head outline -->
-                            <circle cx="100" cy="50" r="18" stroke="#94a3b8" stroke-width="1.2" opacity="0.4" />
-                            
-                            <!-- Collar bone / shoulder lines -->
-                            <path d="M70 85 L130 85" stroke="#94a3b8" stroke-width="1.5" opacity="0.4" />
-                            <!-- Spine segments -->
-                            <path d="M100 68 L100 210" stroke="#94a3b8" stroke-width="3" stroke-linecap="round" opacity="0.5" />
-                            
-                            <!-- Pelvis structure -->
-                            <path d="M75 210 L125 210 M75 210 L80 230 L120 230 L125 210" stroke="#94a3b8" stroke-width="1.5" opacity="0.4" fill="rgba(148, 163, 184, 0.05)" />
-                            
-                            <!-- Arm bones -->
-                            <path d="M70 85 L60 145 L50 200" stroke="#94a3b8" stroke-width="1.2" opacity="0.3" />
-                            <path d="M130 85 L140 145 L150 200" stroke="#94a3b8" stroke-width="1.2" opacity="0.3" />
-                            
-                            <!-- Leg bones -->
-                            <path d="M80 230 L80 300 L80 370" stroke="#94a3b8" stroke-width="1.5" opacity="0.3" />
-                            <path d="M120 230 L120 300 L120 370" stroke="#94a3b8" stroke-width="1.5" opacity="0.3" />
-
-                            <!-- Glowing Joint Nodes (Toggled dynamically by main.js) -->
-                            <!-- Spine Node -->
-                            <g class="joint-marker" id="joint-spine">
-                                <circle cx="100" cy="130" r="5" class="core" />
-                                <circle cx="100" cy="130" r="9" class="ring" />
-                            </g>
-
-                            <!-- Shoulder Node -->
-                            <g class="joint-marker" id="joint-shoulder">
-                                <circle cx="70" cy="85" r="5" class="core" />
-                                <circle cx="70" cy="85" r="9" class="ring" />
-                            </g>
-
-                            <!-- Hip Node -->
-                            <g class="joint-marker" id="joint-hip">
-                                <circle cx="80" cy="230" r="5" class="core" />
-                                <circle cx="80" cy="230" r="9" class="ring" />
-                            </g>
-
-                            <!-- Knee Node -->
-                            <g class="joint-marker" id="joint-knee">
-                                <circle cx="80" cy="300" r="5" class="core" />
-                                <circle cx="80" cy="300" r="9" class="ring" />
-                            </g>
-
-                            <!-- Elbow Node -->
-                            <g class="joint-marker" id="joint-elbow">
-                                <circle cx="60" cy="145" r="5" class="core" />
-                                <circle cx="60" cy="145" r="9" class="ring" />
-                            </g>
-
-                            <!-- Ankle Node -->
-                            <g class="joint-marker" id="joint-ankle">
-                                <circle cx="80" cy="370" r="5" class="core" />
-                                <circle cx="80" cy="370" r="9" class="ring" />
-                            </g>
+                <!-- Card 2 -->
+                <div class="service-card">
+                    <div class="service-icon-wrapper">
+                        <svg class="service-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
                         </svg>
                     </div>
+                    <h3 class="service-card-title">Preventive Health & Wellness</h3>
+                    <p class="service-card-desc">
+                        Personalized health roadmaps, detailed risk assessments, nutritional consultations, vaccination planning, and proactive age-specific screenings.
+                    </p>
+                    <ul class="service-card-bullets">
+                        <li>Custom Health Roadmaps</li>
+                        <li>Nutritional Consultation</li>
+                        <li>Biometric Screenings</li>
+                    </ul>
                 </div>
 
-                <!-- Right panel: Scrolling Specialty Descriptions -->
-                <div class="map-scroll-panel">
-                    
-                    <!-- Spine segment -->
-                    <div class="scroll-text-block" data-joint="spine">
-                        <h3><span class="num">01</span> Spine &amp; Posture Care</h3>
-                        <p>Comprehensive evaluation and treatment for postural imbalance, spinal alignment, and degenerative disc disorders. Focused on restoring mechanical balance without immediate aggressive surgical fusion.</p>
-                        <ul class="bullet-list">
-                            <li>
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span>Spinal Postural Assessment</span>
-                            </li>
-                            <li>
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span>Conservative Disc Management</span>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- Shoulder segment -->
-                    <div class="scroll-text-block" data-joint="shoulder">
-                        <h3><span class="num">02</span> Shoulder Reconstruction</h3>
-                        <p>Specialized arthroscopic treatments for complex shoulder instability and muscle damage. Restoring throwing, lifting, and overhead mobility with high-strength anchors.</p>
-                        <ul class="bullet-list">
-                            <li>
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span>Rotator Cuff Repair</span>
-                            </li>
-                            <li>
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span>Bankart &amp; Instability Stabilization</span>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- Hip segment -->
-                    <div class="scroll-text-block" data-joint="hip">
-                        <h3><span class="num">03</span> Hip Joint Restoration</h3>
-                        <p>Advanced minimally invasive hip replacements and reconstructions. Employing bone-preserving technologies to help patients recover normal gait and joint load bearing capacity.</p>
-                        <ul class="bullet-list">
-                            <li>
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span>Total Hip Replacement (THR)</span>
-                            </li>
-                            <li>
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span>Femoroacetabular Impingement (FAI) Release</span>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- Knee segment -->
-                    <div class="scroll-text-block" data-joint="knee">
-                        <h3><span class="num">04</span> Knee Reconstruction</h3>
-                        <p>Advanced keyhole procedures for ligament stabilization and meniscus restoration. Rebuilding knee strength to get athletes back to high-impact cutting and pivoting movements.</p>
-                        <ul class="bullet-list">
-                            <li>
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span>ACL / PCL Reconstruction</span>
-                            </li>
-                            <li>
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span>Meniscal Repair &amp; Suture</span>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- Elbow segment -->
-                    <div class="scroll-text-block" data-joint="elbow">
-                        <h3><span class="num">05</span> Elbow &amp; Wrist Mobilization</h3>
-                        <p>Micro-incision procedures for tendon releases and nerve decompressions. Alleviating stiffness and numbness caused by repetitive motion strains.</p>
-                        <ul class="bullet-list">
-                            <li>
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span>Tennis / Golfer's Elbow Release</span>
-                            </li>
-                            <li>
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span>Carpal Tunnel Decompression</span>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- Ankle segment -->
-                    <div class="scroll-text-block" data-joint="ankle">
-                        <h3><span class="num">06</span> Ankle Stabilization</h3>
-                        <p>Treating chronic sprains, bone spurs, and ligament tears. Restoring strong ankle dynamics for running, jogging, and walking on uneven terrain.</p>
-                        <ul class="bullet-list">
-                            <li>
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span>Ankle Arthroscopy (Debridement)</span>
-                            </li>
-                            <li>
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span>Lateral Ligament Reconstruction</span>
-                            </li>
-                        </ul>
-                    </div>
-
-                </div>
-
-            </div>
-        </section>
-
-        <!-- Range of Motion Simulator Section -->
-        <section id="rom" class="rom-simulator">
-            <div class="container">
-                <h2 class="fade-in">Restoring Range of <span class="highlight">Motion</span></h2>
-                <div class="rom-card fade-in delay-1">
-                    
-                    <div class="rom-visual">
-                        <span class="rom-display-angle" id="romDisplayAngle">45°</span>
-                        <!-- Interactive SVG Leg bones -->
-                        <svg class="rom-anatomy-svg" viewBox="0 0 200 200">
-                            <!-- Femur (Upper fixed bone) -->
-                            <g class="femur-bone" id="femurBone">
-                                <rect x="94" y="20" width="12" height="90" rx="6" fill="#94a3b8" opacity="0.75" />
-                                <circle cx="100" cy="110" r="10" fill="#0ea5e9" />
-                            </g>
-                            <!-- Joint center rotation point -->
-                            <circle cx="100" cy="110" r="14" fill="none" stroke="#22d3ee" stroke-width="1.5" stroke-dasharray="2 3" />
-                            
-                            <!-- Tibia (Lower rotating bone) -->
-                            <g class="tibia-bone" id="tibiaBone" transform="rotate(0, 100, 110)">
-                                <rect x="95" y="110" width="10" height="70" rx="5" fill="#94a3b8" />
-                                <circle cx="100" cy="180" r="6" fill="#0369a1" />
-                            </g>
+                <!-- Card 3 -->
+                <div class="service-card">
+                    <div class="service-icon-wrapper">
+                        <svg class="service-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18z"/>
+                            <path d="M12 7v10M8 12h8"/>
                         </svg>
                     </div>
+                    <h3 class="service-card-title">Aesthetics & Skin Consultations</h3>
+                    <p class="service-card-desc">
+                        Healthy aging planning, medical skin screenings, non-invasive rejuvenation consults, and customized clinical skincare regimens designed for your unique skin chemistry.
+                    </p>
+                    <ul class="service-card-bullets">
+                        <li>Clinical Skincare Analysis</li>
+                        <li>Healthy Aging Strategies</li>
+                        <li>Skin Screenings</li>
+                    </ul>
+                </div>
 
-                    <div class="rom-controls">
-                        <h3>Joint Simulator</h3>
-                        <p>Drag the slider below to simulate knee joint bending. Normal orthopaedic procedures aim to return joints from restricted stiffness to full flexion.</p>
-                        
-                        <div class="rom-slider-group">
-                            <div class="rom-slider-labels">
-                                <span id="stageStiffness" class="active-stage">45° Stiffness</span>
-                                <span id="stageExtension">90° Extension</span>
-                                <span id="stageFlexion">135° Flexion</span>
-                            </div>
-                            <input type="range" id="romSlider" min="45" max="135" value="45" class="rom-range-slider">
-                        </div>
-                        <div style="font-size: 0.9rem; border-left: 2px solid var(--accent-glow); padding-left: 1rem; margin-top: 1rem;">
-                            <strong>Treatment Goal:</strong> Safely rebuild structural integrity and muscle strength, achieving over 120° of active flexion for normal daily locomotion.
-                        </div>
+                <!-- Card 4 -->
+                <div class="service-card">
+                    <div class="service-icon-wrapper">
+                        <svg class="service-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
                     </div>
-
+                    <h3 class="service-card-title">Family Medicine & Pediatrics</h3>
+                    <p class="service-card-desc">
+                        Dedicated care for all ages. Tracking developmental milestones, adolescent health guides, school & sports physicals, and compassionate childhood consultations.
+                    </p>
+                    <ul class="service-card-bullets">
+                        <li>Developmental Milestones</li>
+                        <li>Sports & School Physicals</li>
+                        <li>Adolescent Health Support</li>
+                    </ul>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- "Keyhole Precision" Stepper Section -->
-        <section id="stepper" class="stepper-section">
-            <div class="container">
-                <h2>Keyhole <span class="highlight">Precision</span> (How Arthroscopy Works)</h2>
-                <div class="stepper-grid fade-in delay-1">
-                    <div class="stepper-line"></div>
-                    
-                    <div class="step-node active-step">
-                        <div class="step-circle">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <line x1="12" y1="5" x2="12" y2="19"></line>
-                                <line x1="5" y1="12" x2="19" y2="12"></line>
-                            </svg>
-                        </div>
-                        <h4>1. Portal Access</h4>
-                        <p>Two tiny 4mm portal incisions are made, avoiding muscle dissection and minimizing tissue trauma.</p>
+    <!-- Interactive Health Quiz Section -->
+    <section class="quiz-section" id="quiz-section">
+        <div class="container quiz-container">
+            <div class="quiz-intro">
+                <div class="section-badge">Wellness Assessment</div>
+                <h2 class="section-title">Find Your Personalized Wellness Direction</h2>
+                <p class="quiz-intro-text">
+                    Take our quick 1-minute interactive wellness assessment. Based on your goals and symptoms, we'll recommend the ideal service and direct you right to the scheduler.
+                </p>
+                <div class="quiz-illustration">
+                    <div class="leaf-shape-graphic">
+                        <div class="pulse-ring"></div>
+                        <div class="pulse-center">📊</div>
                     </div>
-
-                    <div class="step-node">
-                        <div class="step-circle">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
-                                <circle cx="12" cy="13" r="4"></circle>
-                            </svg>
-                        </div>
-                        <h4>2. HD Visualization</h4>
-                        <p>An arthroscopic lens transmits live HD feed of joint interior structures on monitor.</p>
-                    </div>
-
-                    <div class="step-node">
-                        <div class="step-circle">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="18" cy="5" r="3"></circle>
-                                <circle cx="6" cy="19" r="3"></circle>
-                                <line x1="9" y1="16.5" x2="15" y2="7.5"></line>
-                            </svg>
-                        </div>
-                        <h4>3. Micro-Repair</h4>
-                        <p>Specialized micro-tools suture cartilage or anchors secure ligaments with sub-millimeter precision.</p>
-                    </div>
-
-                    <div class="step-node">
-                        <div class="step-circle">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
-                            </svg>
-                        </div>
-                        <h4>4. Rapid Healing</h4>
-                        <p>Same-day discharge with rapid mobility protocols, minimal scaring, and less pain.</p>
-                    </div>
-
                 </div>
             </div>
-        </section>
-
-        <!-- Specialties Index (Conditions vs Treatments) -->
-        <section class="tabbed-panel-section">
-            <div class="container">
-                <h2 class="fade-in">Diagnostic &amp; <span class="highlight">Surgical</span> Index</h2>
+            
+            <div class="quiz-widget-card" id="quiz-widget">
+                <!-- Step Progress -->
+                <div class="quiz-progress-bar">
+                    <div class="progress-fill" id="quiz-progress-fill" style="width: 25%;"></div>
+                </div>
                 
-                <div class="tabbed-panel-grid" style="display: grid; grid-template-columns: 0.95fr 1.05fr; gap: 4rem; align-items: start;">
-                    <!-- Left: Clinical Anatomy Image Visual -->
-                    <div class="tabbed-visual fade-in delay-1" style="border-radius: 12px; overflow: hidden; border: 1px solid var(--border-color); box-shadow: var(--shadow-glow); position: relative;">
-                        <img src="knee_anatomy.png" alt="Clinical Knee Joint Arthroscopy Repair Details" style="width: 100%; display: block; object-fit: cover;">
-                        <div class="badge-capsule" style="position: absolute; bottom: 20px; left: 20px; background: rgba(5,10,18,0.85); backdrop-filter: blur(10px); border-color: var(--accent-glow);">
-                            <span>Knee Anatomy &amp; Repair Details</span>
-                        </div>
-                    </div>
-                    
-                    <!-- Right: Tabbed Details -->
-                    <div class="tab-container fade-in delay-2">
-                    
-                    <div class="tab-nav">
-                        <button class="tab-btn active-tab" data-tab="knee">Knee Joint</button>
-                        <button class="tab-btn" data-tab="shoulder">Shoulder Joint</button>
-                        <button class="tab-btn" data-tab="hip">Hip Joint</button>
-                        <button class="tab-btn" data-tab="spine">Spine &amp; Others</button>
-                    </div>
-
-                    <!-- Knee Tab -->
-                    <div class="tab-content active-content" id="tab-content-knee">
-                        <div class="tab-column column-condition">
-                            <h4>
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
-                                Common Conditions
-                            </h4>
-                            <ul class="tab-item-list">
-                                <li>
-                                    <strong>ACL / PCL Ligament Tears</strong>
-                                    <span>Instability or giving-way sensation of knee.</span>
-                                </li>
-                                <li>
-                                    <strong>Meniscus Tears</strong>
-                                    <span>Locking, clicking, and joint line pain.</span>
-                                </li>
-                                <li>
-                                    <strong>Cartilage Flaps &amp; Arthritis</strong>
-                                    <span>Degeneration and swelling inside joint cavity.</span>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="tab-column column-treatment">
-                            <h4>
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                Surgical Treatments
-                            </h4>
-                            <ul class="tab-item-list">
-                                <li>
-                                    <strong>Arthroscopic ACL Reconstruction</strong>
-                                    <span>Rebuilding ligament using autografts.</span>
-                                </li>
-                                <li>
-                                    <strong>Meniscal Repair / Meniscectomy</strong>
-                                    <span>Suturing cartilage tear or smoothing edges.</span>
-                                </li>
-                                <li>
-                                    <strong>Chondroplasty &amp; Knee Replacements</strong>
-                                    <span>Debriding joint or joint replacements.</span>
-                                </li>
-                            </ul>
+                <!-- Quiz Steps Container -->
+                <div class="quiz-steps">
+                    <!-- Step 1 -->
+                    <div class="quiz-step active" data-step="1">
+                        <span class="step-counter">Question 1 of 3</span>
+                        <h3 class="quiz-step-title">What is your primary wellness goal today?</h3>
+                        <div class="quiz-options">
+                            <button type="button" class="quiz-opt-btn" data-value="primary-care" data-text="Comprehensive Primary Care">
+                                <span class="opt-indicator"></span>
+                                <span class="opt-label">Resolve general symptoms or request an annual check-up</span>
+                            </button>
+                            <button type="button" class="quiz-opt-btn" data-value="preventive" data-text="Preventive Health Roadmap">
+                                <span class="opt-indicator"></span>
+                                <span class="opt-label">Proactively optimize my diet, routine, and health roadmap</span>
+                            </button>
+                            <button type="button" class="quiz-opt-btn" data-value="aesthetics" data-text="Aesthetics & Skin Consultation">
+                                <span class="opt-indicator"></span>
+                                <span class="opt-label">Evaluate skincare plans, anti-aging, or skin health checks</span>
+                            </button>
+                            <button type="button" class="quiz-opt-btn" data-value="pediatrics" data-text="Family Medicine & Pediatrics">
+                                <span class="opt-indicator"></span>
+                                <span class="opt-label">Schedule developmental check-ups or care for children</span>
+                            </button>
                         </div>
                     </div>
 
-                    <!-- Shoulder Tab -->
-                    <div class="tab-content" id="tab-content-shoulder">
-                        <div class="tab-column column-condition">
-                            <h4>
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
-                                Common Conditions
-                            </h4>
-                            <ul class="tab-item-list">
-                                <li>
-                                    <strong>Rotator Cuff Tears</strong>
-                                    <span>Severe overhead weakness and night pain.</span>
-                                </li>
-                                <li>
-                                    <strong>Recurrent Dislocations</strong>
-                                    <span>Shoulder slip-outs due to labral tears.</span>
-                                </li>
-                                <li>
-                                    <strong>Adhesive Capsulitis (Frozen Shoulder)</strong>
-                                    <span>Extreme stiffness and restricted movement.</span>
-                                </li>
-                            </ul>
+                    <!-- Step 2 -->
+                    <div class="quiz-step" data-step="2">
+                        <span class="step-counter">Question 2 of 3</span>
+                        <h3 class="quiz-step-title">Select your primary age range:</h3>
+                        <div class="quiz-options">
+                            <button type="button" class="quiz-opt-btn" data-value="child" data-text="Child/Adolescent">
+                                <span class="opt-indicator"></span>
+                                <span class="opt-label">Child or Teenager (under 18 years old)</span>
+                            </button>
+                            <button type="button" class="quiz-opt-btn" data-value="adult-young" data-text="Young Adult (18-40)">
+                                <span class="opt-indicator"></span>
+                                <span class="opt-label">Young Adult (18 to 45 years old)</span>
+                            </button>
+                            <button type="button" class="quiz-opt-btn" data-value="adult-mature" data-text="Mature Adult (45+)">
+                                <span class="opt-indicator"></span>
+                                <span class="opt-label">Mature Adult (45 years old or older)</span>
+                            </button>
                         </div>
-                        <div class="tab-column column-treatment">
-                            <h4>
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                Surgical Treatments
-                            </h4>
-                            <ul class="tab-item-list">
-                                <li>
-                                    <strong>Rotator Cuff Suture Anchoring</strong>
-                                    <span>Securing torn tendons back to humeral head.</span>
-                                </li>
-                                <li>
-                                    <strong>Arthroscopic Bankart Repair</strong>
-                                    <span>Suturing labrum to restore socket stability.</span>
-                                </li>
-                                <li>
-                                    <strong>Hydrodilatation &amp; Capsule Release</strong>
-                                    <span>Releasing contractures to restore motion.</span>
-                                </li>
-                            </ul>
+                        <div class="quiz-navigation">
+                            <button type="button" class="btn btn-secondary quiz-prev-btn">Back</button>
                         </div>
                     </div>
 
-                    <!-- Hip Tab -->
-                    <div class="tab-content" id="tab-content-hip">
-                        <div class="tab-column column-condition">
-                            <h4>
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
-                                Common Conditions
-                            </h4>
-                            <ul class="tab-item-list">
-                                <li>
-                                    <strong>Advanced Osteoarthritis</strong>
-                                    <span>Severe groin pain and limited walking gait.</span>
-                                </li>
-                                <li>
-                                    <strong>Avascular Necrosis (AVN)</strong>
-                                    <span>Loss of blood supply leading to bone collapse.</span>
-                                </li>
-                                <li>
-                                    <strong>Femoroacetabular Impingement</strong>
-                                    <span>Bone pinching causing sharp groin catches.</span>
-                                </li>
-                            </ul>
+                    <!-- Step 3 -->
+                    <div class="quiz-step" data-step="3">
+                        <span class="step-counter">Question 3 of 3</span>
+                        <h3 class="quiz-step-title">How soon would you like to get started?</h3>
+                        <div class="quiz-options">
+                            <button type="button" class="quiz-opt-btn" data-value="urgent" data-text="Urgent Care Needs">
+                                <span class="opt-indicator"></span>
+                                <span class="opt-label">Within the next few days (Acute concern)</span>
+                            </button>
+                            <button type="button" class="quiz-opt-btn" data-value="routine" data-text="Routine Screening/Consult">
+                                <span class="opt-indicator"></span>
+                                <span class="opt-label">In the next 2-3 weeks (Preventive / Consultation)</span>
+                            </button>
+                            <button type="button" class="quiz-opt-btn" data-value="flexible" data-text="Flexible Timing">
+                                <span class="opt-indicator"></span>
+                                <span class="opt-label">Flexible / I am just researching options</span>
+                            </button>
                         </div>
-                        <div class="tab-column column-treatment">
-                            <h4>
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                Surgical Treatments
-                            </h4>
-                            <ul class="tab-item-list">
-                                <li>
-                                    <strong>Total Hip replacement (THR)</strong>
-                                    <span>Artificial ball-socket joint replacement.</span>
-                                </li>
-                                <li>
-                                    <strong>Core Decompression / Bone Grafting</strong>
-                                    <span>Relieving pressure to save femoral head.</span>
-                                </li>
-                                <li>
-                                    <strong>Arthroscopic Labral &amp; Bone Trimming</strong>
-                                    <span>Shaving bone spurs to restore smooth rotation.</span>
-                                </li>
-                            </ul>
+                        <div class="quiz-navigation">
+                            <button type="button" class="btn btn-secondary quiz-prev-btn">Back</button>
                         </div>
                     </div>
 
-                    <!-- Spine & Others Tab -->
-                    <div class="tab-content" id="tab-content-spine">
-                        <div class="tab-column column-condition">
-                            <h4>
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
-                                Common Conditions
-                            </h4>
-                            <ul class="tab-item-list">
-                                <li>
-                                    <strong>Sciatica &amp; Disc Herniations</strong>
-                                    <span>Radiating pain down legs or back stiffness.</span>
-                                </li>
-                                <li>
-                                    <strong>Ligament Sprains &amp; Sports Tears</strong>
-                                    <span>Acute instability of ankle, wrist, or elbow.</span>
-                                </li>
-                                <li>
-                                    <strong>Carpal Tunnel Nerve Compression</strong>
-                                    <span>Severe wrist pain and finger numbness.</span>
-                                </li>
-                            </ul>
+                    <!-- Step Result -->
+                    <div class="quiz-step" id="quiz-result-step">
+                        <div class="result-celebration">🎉</div>
+                        <h3 class="quiz-step-title">Your Recommendation is Ready!</h3>
+                        <div class="result-recommendation-box">
+                            <h4 id="recommended-service-title">Preventive Health Consultation</h4>
+                            <p id="recommended-service-desc">
+                                Based on your wellness priorities, we recommend booking a comprehensive screening. This allows Dr. Jenkins to design a fully customized roadmap covering biometrics, diet, and stress.
+                            </p>
                         </div>
-                        <div class="tab-column column-treatment">
-                            <h4>
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                Surgical Treatments
-                            </h4>
-                            <ul class="tab-item-list">
-                                <li>
-                                    <strong>Conservative Spine &amp; Decompression</strong>
-                                    <span>Physical alignments, blocks, and posture care.</span>
-                                </li>
-                                <li>
-                                    <strong>Ankle / Wrist Arthroscopy</strong>
-                                    <span>Keyhole ligament repairs and debridement.</span>
-                                </li>
-                                <li>
-                                    <strong>Carpal Tunnel Release Surgery</strong>
-                                    <span>Releasing transverse ligament to free nerve.</span>
-                                </li>
-                            </ul>
+                        <p class="result-next-text">We've selected this service for you in the scheduler below!</p>
+                        <div class="quiz-navigation">
+                            <a href="#booking" id="quiz-to-booking-btn" class="btn btn-primary">Proceed to Schedule</a>
+                            <button type="button" class="btn btn-text" id="reset-quiz-btn">Retake Quiz</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Slider Section -->
+    <section class="testimonials-section" id="testimonials">
+        <div class="container">
+            <div class="section-header-center">
+                <div class="section-badge">Patient Testimonials</div>
+                <h2 class="section-title">What Our Patients Say</h2>
+                <p class="section-subtitle">
+                    Real stories of trust, comprehensive attention, and life-changing care.
+                </p>
+            </div>
+            
+            <div class="testimonials-slider-wrapper">
+                <div class="testimonials-container" id="testimonials-track">
+                    <!-- Testimonial 1 -->
+                    <div class="testimonial-card active">
+                        <div class="rating-stars">★★★★★</div>
+                        <p class="testimonial-text">
+                            "Dr. Sarah completely changed my view of doctors. I never felt rushed. She took 45 minutes to go through my medical history and explained things in plain English. She really care about her patient."
+                        </p>
+                        <div class="patient-info">
+                            <div class="patient-avatar-placeholder">MT</div>
+                            <div>
+                                <h4 class="patient-name">Marcus Thompson</h4>
+                                <p class="patient-meta">Patient for 3 Years | Routine Care</p>
+                            </div>
                         </div>
                     </div>
 
-                </div> <!-- Close tab-container -->
-                </div> <!-- Close tabbed-panel-grid -->
-            </div> <!-- Close container -->
-        </section>
+                    <!-- Testimonial 2 -->
+                    <div class="testimonial-card">
+                        <div class="rating-stars">★★★★★</div>
+                        <p class="testimonial-text">
+                            "Finding a pediatrician who makes children feel safe is tough. Dr. Jenkins is absolutely magical with my 6-year-old. The clinic itself is incredibly calming and smells like chamomile."
+                        </p>
+                        <div class="patient-info">
+                            <div class="patient-avatar-placeholder">EL</div>
+                            <div>
+                                <h4 class="patient-name">Elena Lopez</h4>
+                                <p class="patient-meta">Parent | Pediatrics & Skin Care</p>
+                            </div>
+                        </div>
+                    </div>
 
-        <!-- Specialties Snap Carousel Section -->
-        <section id="specialties" class="specialties-carousel-section">
-            <div class="container">
-                <div class="carousel-header-container fade-in">
-                    <h2>Specialist <span class="highlight">Procedures</span></h2>
-                    <div class="carousel-controls">
-                        <button class="carousel-arrow" id="prevBtn" aria-label="Previous Specialty">&larr;</button>
-                        <button class="carousel-arrow" id="nextBtn" aria-label="Next Specialty">&rarr;</button>
+                    <!-- Testimonial 3 -->
+                    <div class="testimonial-card">
+                        <div class="rating-stars">★★★★★</div>
+                        <p class="testimonial-text">
+                            "I visited her for the aesthetic skin consultation. Unlike typical aesthetic clinics that try to oversell, she was completely honest about what treatments would benefit my skin type. Very professional!"
+                        </p>
+                        <div class="patient-info">
+                            <div class="patient-avatar-placeholder">SH</div>
+                            <div>
+                                <h4 class="patient-name">Sarah Harwood</h4>
+                                <p class="patient-meta">Patient for 1 Year | Skin & Wellness</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="carousel-track-container fade-in delay-1" id="carouselTrack">
-                    
-                    <!-- Card Knee -->
-                    <div class="carousel-card highlighted-card">
-                        <div class="card-decor-plus">+</div>
-                        <div class="carousel-card-icon-box">
-                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20M2 12a14.5 14.5 0 0 0 20 0"/></svg>
-                        </div>
-                        <h3>Knee Arthroscopy</h3>
-                        <p>ACL reconstructions, meniscal repairs, and cartilage restorations using advanced suture devices.</p>
-                        <a href="#book" class="carousel-card-link">Request Consultation <span class="arrow">&nearr;</span></a>
+                <!-- Slider Controls -->
+                <div class="slider-controls">
+                    <button type="button" class="slider-arrow" id="prev-slide" aria-label="Previous Testimonial">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+                            <line x1="19" y1="12" x2="5" y2="12"></line>
+                            <polyline points="12 19 5 12 12 5"></polyline>
+                        </svg>
+                    </button>
+                    <div class="slider-dots" id="slider-dots">
+                        <span class="slider-dot active" data-index="0"></span>
+                        <span class="slider-dot" data-index="1"></span>
+                        <span class="slider-dot" data-index="2"></span>
                     </div>
-
-                    <!-- Card Shoulder -->
-                    <div class="carousel-card">
-                        <div class="card-decor-plus">+</div>
-                        <div class="carousel-card-icon-box">
-                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 18c0-2-4-3-4-3s-4 1-4 3M12 12a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/><path d="M3 20h18"/></svg>
-                        </div>
-                        <h3>Shoulder Surgery</h3>
-                        <p>Treating rotator cuff tears, shoulder dislocations, labral repairs, and adhesive capsulitis stiffness.</p>
-                        <a href="#book" class="carousel-card-link">Request Consultation <span class="arrow">&nearr;</span></a>
-                    </div>
-
-                    <!-- Card Hip Replacement -->
-                    <div class="carousel-card">
-                        <div class="card-decor-plus">+</div>
-                        <div class="carousel-card-icon-box">
-                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="7" cy="12" r="3"/><circle cx="17" cy="12" r="3"/><path d="M10 12h4M7 9V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v4"/></svg>
-                        </div>
-                        <h3>Hip Replacement</h3>
-                        <p>Minimally invasive total hip replacements with bone-conserving prosthesis for optimal long-term wear.</p>
-                        <a href="#book" class="carousel-card-link">Request Consultation <span class="arrow">&nearr;</span></a>
-                    </div>
-
-                    <!-- Card Joint replacement -->
-                    <div class="carousel-card">
-                        <div class="card-decor-plus">+</div>
-                        <div class="carousel-card-icon-box">
-                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="20"/><line x1="12" y1="20" x2="12" y2="20"/><line x1="6" y1="20" x2="6" y2="20"/><circle cx="12" cy="10" r="6"/></svg>
-                        </div>
-                        <h3>Joint Replacement</h3>
-                        <p>Anatomical total knee and shoulder joint replacements designed for natural kinematics and mobility.</p>
-                        <a href="#book" class="carousel-card-link">Request Consultation <span class="arrow">&nearr;</span></a>
-                    </div>
-
-                    <!-- Card Sports injury -->
-                    <div class="carousel-card">
-                        <div class="card-decor-plus">+</div>
-                        <div class="carousel-card-icon-box">
-                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-                        </div>
-                        <h3>Sports Injuries</h3>
-                        <p>Reconstructive procedures for elite athletes returning to competitive sports dynamics.</p>
-                        <a href="#book" class="carousel-card-link">Request Consultation <span class="arrow">&nearr;</span></a>
-                    </div>
-
-                    <!-- Card Elbow ankle wrist -->
-                    <div class="carousel-card">
-                        <div class="card-decor-plus">+</div>
-                        <div class="carousel-card-icon-box">
-                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-                        </div>
-                        <h3>Limb Arthroscopy</h3>
-                        <p>Keyhole surgery decompressions and ligament repairs of elbow, wrist, and ankle joints.</p>
-                        <a href="#book" class="carousel-card-link">Request Consultation <span class="arrow">&nearr;</span></a>
-                    </div>
-
+                    <button type="button" class="slider-arrow" id="next-slide" aria-label="Next Testimonial">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </button>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Procedures Gallery Section -->
-        <section class="procedures-gallery-section">
-            <div class="container">
-                <h2 class="fade-in">Inside the <span class="highlight">Operating Theatre</span></h2>
-                <p class="gallery-intro fade-in delay-1">Witness the precision and technology behind Dr. Bansal's surgical expertise — from arthroscopic keyhole procedures to total joint replacements.</p>
+    <!-- FAQ Section -->
+    <section class="faqs-section" id="faqs">
+        <div class="container faqs-container">
+            <div class="faq-intro-block">
+                <div class="section-badge font-accent">Common Questions</div>
+                <h2 class="section-title">Answering Your Questions Honestly</h2>
+                <p class="faq-description">
+                    We believe in complete transparency. If you have questions about clinic policies, fees, or how boutique family practice works, read below.
+                </p>
+                <div class="faq-cta-box">
+                    <p>Have a question not listed here?</p>
+                    <a href="tel:8002345678" class="contact-number-link">+1 (800) 234-5789</a>
+                </div>
+            </div>
+            
+            <div class="faqs-accordion">
+                <!-- FAQ Item 1 -->
+                <div class="faq-item">
+                    <button class="faq-trigger" aria-expanded="false">
+                        <span>Do you accept commercial insurance?</span>
+                        <span class="faq-arrow"></span>
+                    </button>
+                    <div class="faq-content" aria-hidden="true">
+                        <p>
+                            To maintain the high quality and unhurried nature of our visits, we do not bill insurance companies directly. However, we provide detailed medical receipts (superbills) that you can easily submit to your insurance provider for out-of-network reimbursement.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="faq-item">
+                    <button class="faq-trigger" aria-expanded="false">
+                        <span>What is your cancellation and booking policy?</span>
+                        <span class="faq-arrow"></span>
+                    </button>
+                    <div class="faq-content" aria-hidden="true">
+                        <p>
+                            We value our patients' time. Since we only book a limited number of clients per day, we require a 24-hour notice for cancellations or rescheduling. Cancellations made less than 24 hours prior to the slot may incur a fee.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="faq-item">
+                    <button class="faq-trigger" aria-expanded="false">
+                        <span>Do you offer virtual/telehealth appointments?</span>
+                        <span class="faq-arrow"></span>
+                    </button>
+                    <div class="faq-content" aria-hidden="true">
+                        <p>
+                            Yes! For routine consultations, chronic disease check-ins, lab results reviews, and certain wellness assessments, telehealth is available and highly convenient. You can select "Telehealth" during booking.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="faq-item">
+                    <button class="faq-trigger" aria-expanded="false">
+                        <span>What happens during my first wellness consultation?</span>
+                        <span class="faq-arrow"></span>
+                    </button>
+                    <div class="faq-content" aria-hidden="true">
+                        <p>
+                            Your initial visit is a comprehensive, 45-to-60-minute session. We cover your clinical history, dietary patterns, sleep hygiene, physical activity levels, stress factors, and any persistent symptoms. Dr. Jenkins will formulate a detailed primary care wellness roadmap.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Appointment Booking & Contact Section -->
+    <section class="booking-section" id="booking">
+        <div class="container booking-container">
+            <div class="booking-details-column">
+                <div class="section-badge font-accent">Schedule Appointment</div>
+                <h2 class="section-title text-white">Book Your Personal Consultation</h2>
+                <p class="booking-intro-text text-white">
+                    Select a convenient service and time. Our team will contact you within 2 business hours to verify your details and lock in your consultation.
+                </p>
                 
-                <div class="gallery-grid fade-in delay-2">
-
-                    <!-- Gallery Card 1: Live Arthroscopy OR -->
-                    <div class="gallery-card gallery-card-large">
-                        <div class="gallery-img-wrap">
-                            <img src="arthroscopy_procedure.png" alt="Arthroscopic knee surgery in progress" class="gallery-img">
-                        </div>
-                        <div class="gallery-card-overlay">
-                            <div class="gallery-tag">Live Procedure</div>
-                            <h3>Knee Arthroscopy</h3>
-                            <p>Arthroscopic keyhole approach — 4mm portals, HD live joint imaging, suture repair under direct visualization.</p>
+                <div class="contact-details-list">
+                    <div class="contact-info-item">
+                        <span class="contact-info-icon">📍</span>
+                        <div>
+                            <h4 class="contact-item-title text-white">Clinic Location</h4>
+                            <p class="text-white-dim">742 Evergreen Terrace, Suite 100, Springfield</p>
                         </div>
                     </div>
-
-                    <!-- Gallery Card 2 + 3 stacked -->
-                    <div class="gallery-stack">
-                        <div class="gallery-card">
-                            <div class="gallery-img-wrap">
-                                <img src="shoulder_arthroscopy.png" alt="Shoulder rotator cuff repair arthroscopy" class="gallery-img">
-                            </div>
-                            <div class="gallery-card-overlay">
-                                <div class="gallery-tag">Shoulder Reconstruction</div>
-                                <h3>Rotator Cuff Repair</h3>
-                                <p>Suture anchor-based arthroscopic repair of shoulder tendons with sub-millimeter precision.</p>
-                            </div>
-                        </div>
-
-                        <div class="gallery-card">
-                            <div class="gallery-img-wrap">
-                                <img src="hip_replacement.png" alt="Total hip replacement prosthesis" class="gallery-img">
-                            </div>
-                            <div class="gallery-card-overlay">
-                                <div class="gallery-tag">Hip Replacement</div>
-                                <h3>Total Hip Replacement</h3>
-                                <p>Titanium femoral stem and acetabular cup placement with bone-preserving minimally invasive technique.</p>
-                            </div>
+                    <div class="contact-info-item">
+                        <span class="contact-info-icon">📞</span>
+                        <div>
+                            <h4 class="contact-item-title text-white">Direct Line</h4>
+                            <p class="text-white-dim">+1 (800) 234-5789</p>
                         </div>
                     </div>
-
+                    <div class="contact-info-item">
+                        <span class="contact-info-icon">✉️</span>
+                        <div>
+                            <h4 class="contact-item-title text-white">Email Address</h4>
+                            <p class="text-white-dim">care@drsarahjenkins.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <span class="contact-info-icon">🕒</span>
+                        <div>
+                            <h4 class="contact-item-title text-white">Clinic Hours</h4>
+                            <p class="text-white-dim">Mon - Fri: 8:00 AM - 5:00 PM | Sat: By appointment only</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </section>
-
-        <!-- Why Choose Us -->
-        <section id="why-choose" class="why-choose">
-            <div class="container">
-                <h2 class="fade-in">Precision Clinical <span class="highlight">Standards</span></h2>
-                <div class="why-grid">
+            
+            <div class="booking-form-column">
+                <form class="booking-form" id="booking-form" novalidate>
+                    <h3 class="form-title">Consultation Request Form</h3>
                     
-                    <div class="why-card fade-in delay-1">
-                        <div class="why-icon">
-                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-                        </div>
-                        <h3>International Training</h3>
-                        <p>Trained extensively in joint reconstructions (UK) and lower limb sports injuries (Australia) under global specialists.</p>
+                    <!-- Form Row 1 -->
+                    <div class="form-group">
+                        <label for="booking-name" class="form-label">Full Name</label>
+                        <input type="text" id="booking-name" class="form-input" placeholder="e.g. John Doe" required>
+                        <span class="error-msg" id="name-error">Please enter your name.</span>
                     </div>
 
-                    <div class="why-card fade-in delay-2">
-                        <div class="why-icon">
-                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        </div>
-                        <h3>Elite Athlete Experience</h3>
-                        <p>Familiar with high-performance protocols, designing specific repairs and accelerated recovery schedules.</p>
-                    </div>
-
-                    <div class="why-card fade-in delay-3">
-                        <div class="why-icon">
-                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
-                        </div>
-                        <h3>Advanced Arthroscopy</h3>
-                        <p>Utilizes state-of-the-art suture anchors, visual cameras, and muscle-sparing approaches for tissue preservation.</p>
-                    </div>
-
-                    <div class="why-card fade-in delay-4">
-                        <div class="why-icon">
-                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                        </div>
-                        <h3>Trusted local care</h3>
-                        <p>Over 20 years of clinical and surgical practice serving patients across Jalandhar and broader Punjab regions.</p>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- Clinic Hours Section -->
-        <section id="hours" class="hours">
-            <div class="container">
-                <h2 class="fade-in">OPD Schedule</h2>
-                <div class="hours-card fade-in delay-1">
-                    <table class="hours-table">
-                        <thead>
-                            <tr style="display:none;">
-                                <th>Day</th>
-                                <th>Schedule Timings</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="day">Monday</td>
-                                <td class="time">10:00 AM &ndash; 02:00 PM &nbsp;|&nbsp; 04:00 PM &ndash; 06:00 PM</td>
-                            </tr>
-                            <tr>
-                                <td class="day">Tuesday</td>
-                                <td class="time">10:00 AM &ndash; 02:00 PM</td>
-                            </tr>
-                            <tr>
-                                <td class="day">Wednesday</td>
-                                <td class="time">10:00 AM &ndash; 02:00 PM &nbsp;|&nbsp; 04:00 PM &ndash; 06:00 PM</td>
-                            </tr>
-                            <tr>
-                                <td class="day">Thursday</td>
-                                <td class="time">10:00 AM &ndash; 02:00 PM</td>
-                            </tr>
-                            <tr>
-                                <td class="day">Friday</td>
-                                <td class="time">10:00 AM &ndash; 02:00 PM &nbsp;|&nbsp; 04:00 PM &ndash; 06:00 PM</td>
-                            </tr>
-                            <tr>
-                                <td class="day">Saturday</td>
-                                <td class="time">10:00 AM &ndash; 02:00 PM</td>
-                            </tr>
-                            <tr class="closed">
-                                <td class="day">Sunday</td>
-                                <td class="time">Closed</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <p class="hours-note">*Timing reservations are recommended. Patient triages prioritized during morning hours.*</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Pulsing CTA Overlay Section -->
-        <section class="cta-pulse-section">
-            <div class="container cta-pulse-content fade-in">
-                <h2>Take Control of Your Joint Health</h2>
-                <p>Restore stability and dynamic range of motion. Schedule a consultation directly with Dr. Manish Bansal.</p>
-                <div class="pulse-btn-container">
-                    <div class="pulse-ring-outer"></div>
-                    <a href="#book" class="btn btn-primary">Book Consultation &nearr;</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Book Appointment Section -->
-        <section id="book" class="appointment">
-            <div class="container">
-                <h2 class="fade-in">Request Consultation</h2>
-                <div class="appointment-wrapper fade-in delay-1">
-                    <div class="form-header">
-                        <p>Fill out the fields securely. The clinic desk will call you to confirm your consultation schedule.</p>
-                    </div>
-                    
-                    <!-- Success screen -->
-                    <div class="form-success" id="formSuccess"></div>
-
-                    <form id="appointmentForm" class="appointment-form">
+                    <!-- Form Row 2 -->
+                    <div class="form-row">
                         <div class="form-group">
-                            <label for="patientName">Patient Name</label>
-                            <input type="text" id="patientName" placeholder="Enter patient name" required>
+                            <label for="booking-email" class="form-label">Email Address</label>
+                            <input type="email" id="booking-email" class="form-input" placeholder="e.g. john@example.com" required>
+                            <span class="error-msg" id="email-error">Please enter a valid email.</span>
                         </div>
                         <div class="form-group">
-                            <label for="patientPhone">Contact Phone Number</label>
-                            <input type="tel" id="patientPhone" placeholder="10-digit mobile number" pattern="[0-9]{10,13}" required>
+                            <label for="booking-phone" class="form-label">Phone Number</label>
+                            <input type="tel" id="booking-phone" class="form-input" placeholder="e.g. (555) 000-0000" required>
+                            <span class="error-msg" id="phone-error">Please enter a valid phone number.</span>
+                        </div>
+                    </div>
+
+                    <!-- Form Row 3 -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="booking-service" class="form-label">Select Service</label>
+                            <select id="booking-service" class="form-select" required>
+                                <option value="" disabled selected>Choose a Service...</option>
+                                <option value="primary-care">Comprehensive Primary Care</option>
+                                <option value="preventive">Preventive Health & Wellness</option>
+                                <option value="aesthetics">Aesthetics & Skin Consultation</option>
+                                <option value="pediatrics">Family Medicine & Pediatrics</option>
+                            </select>
+                            <span class="error-msg" id="service-error">Please select a service.</span>
                         </div>
                         <div class="form-group">
-                            <label for="preferredDate">Preferred Appointment Date</label>
-                            <input type="date" id="preferredDate" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="specialtyConcern">Major Focus Area</label>
-                            <select id="specialtyConcern" required>
-                                <option value="" disabled selected>Select joint area</option>
-                                <option value="Knee Joint">Knee Joint Arthroscopy</option>
-                                <option value="Shoulder Joint">Shoulder Reconstruction</option>
-                                <option value="Hip Joint">Hip Restoration</option>
-                                <option value="Spine Alignment">Spine Consultation</option>
-                                <option value="Sports Injuries">Sports Injury Repair</option>
-                                <option value="Others">Other Limb Consultation</option>
+                            <label for="booking-type" class="form-label">Appointment Type</label>
+                            <select id="booking-type" class="form-select" required>
+                                <option value="in-person" selected>In-Person Visit</option>
+                                <option value="telehealth">Telehealth / Virtual Visit</option>
                             </select>
                         </div>
-                        <div class="form-group full-width">
-                            <label for="concern">Describe Pain / Symptoms</label>
-                            <textarea id="concern" placeholder="Briefly write pain location, stiffness duration, or diagnostic details (e.g. ACL tear)..." required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Submit Booking Intake &nearr;</button>
-                    </form>
-                </div>
-            </div>
-        </section>
+                    </div>
 
-        <!-- Contact & Location -->
-        <section id="contact" class="contact">
-            <div class="container">
-                <h2 class="fade-in">Contact &amp; Location</h2>
-                <div class="contact-grid">
-                    
-                    <div class="contact-info-panel fade-in delay-1">
-                        <p class="contact-lead">Get in touch directly or visit the clinic coordinates below. Emergency walk-ins coordinated during morning timelines.</p>
-                        
-                        <div class="contact-detail-item">
-                            <div class="contact-detail-icon">
-                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                            </div>
-                            <div class="contact-detail-text">
-                                <h4>Clinic Coordinate</h4>
-                                <p>The Joint Clinic<br>8A Jyoti Nagar, Jalandhar, Punjab 144403</p>
-                            </div>
+                    <!-- Form Row 4 (Interactive Date/Time Slot selection) -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="booking-date" class="form-label">Preferred Date</label>
+                            <input type="date" id="booking-date" class="form-input" required>
+                            <span class="error-msg" id="date-error">Please select a future date.</span>
                         </div>
-
-                        <div class="contact-detail-item">
-                            <div class="contact-detail-icon">
-                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        <div class="form-group">
+                            <label class="form-label">Preferred Time Slot</label>
+                            <div class="time-slots-container" id="time-slots">
+                                <button type="button" class="time-slot-btn" data-time="09:00 AM">09:00 AM</button>
+                                <button type="button" class="time-slot-btn" data-time="11:00 AM">11:00 AM</button>
+                                <button type="button" class="time-slot-btn" data-time="02:00 PM">02:00 PM</button>
+                                <button type="button" class="time-slot-btn" data-time="04:00 PM">04:00 PM</button>
                             </div>
-                            <div class="contact-detail-text">
-                                <h4>Clinic Line</h4>
-                                <p><a href="tel:+919888150800" style="color: inherit; text-decoration: none;">+91 98881 50800</a></p>
-                            </div>
-                        </div>
-
-                        <!-- Facebook Badge -->
-                        <div class="social-connect">
-                            <a href="https://www.facebook.com/DrManishBansalJointClinic" target="_blank" rel="noopener noreferrer" class="social-button">
-                                <svg width="20" height="20" viewBox="0 0 24 24">
-                                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                                </svg>
-                                <div>
-                                    <span>Join our Facebook Community</span>
-                                    <span class="social-stats">63K+ Likes &bull; Daily Updates</span>
-                                </div>
-                            </a>
+                            <input type="hidden" id="booking-time" required>
+                            <span class="error-msg" id="time-error">Please select a time slot.</span>
                         </div>
                     </div>
 
-                    <!-- Map wrapper styled high-tech dark -->
-                    <div class="map-wrapper fade-in delay-2">
-                        <iframe 
-                            title="Interactive map location for Dr. Manish Bansal clinic"
-                            src="https://maps.google.com/maps?q=8A%20Jyoti%20Nagar,%20Jalandhar,%20Punjab%20144403&t=&z=15&ie=UTF8&iwloc=&output=embed" 
-                            allowfullscreen="" 
-                            loading="lazy" 
-                            referrerpolicy="no-referrer-when-downgrade">
-                        </iframe>
+                    <div class="form-group">
+                        <label for="booking-notes" class="form-label">Additional Health Notes (Optional)</label>
+                        <textarea id="booking-notes" class="form-textarea" rows="3" placeholder="Briefly describe what you'd like to address..."></textarea>
                     </div>
 
-                </div>
+                    <button type="submit" class="btn btn-primary form-submit-btn">Request Appointment</button>
+                </form>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
     <!-- Footer -->
-    <footer>
-        <div class="footer-grid">
-            <div class="footer-brand">
-                <span class="logo-main">Dr. Manish Bansal</span>
-                <span class="logo-sub">Consultant Orthopaedic &amp; Sports Surgeon</span>
-                <p>Restoring mechanical mobility using world-class surgical protocols. Specialist in advanced joint arthroscopy and reconstruction fellowship-trained in standard centres in the UK and Australia.</p>
+    <footer class="site-footer">
+        <div class="container footer-container">
+            <div class="footer-brand-column">
+                <a href="#" class="logo footer-logo">
+                    <span class="logo-prefix">Dr. Sarah</span>
+                    <span class="logo-suffix">Jenkins</span>
+                </a>
+                <p class="footer-desc">
+                    High-quality boutique family medicine and skin care delivered in a dedicated patient-first model.
+                </p>
+                <div class="social-links">
+                    <a href="#" class="social-link-icon" aria-label="LinkedIn">💼</a>
+                    <a href="#" class="social-link-icon" aria-label="Instagram">📸</a>
+                    <a href="#" class="social-link-icon" aria-label="Facebook">👥</a>
+                </div>
             </div>
-            <div class="footer-links">
-                <h4>Diagnostics Index</h4>
-                <ul>
-                    <li><a href="#specialties-map">Knee Ligament Repairs</a></li>
-                    <li><a href="#specialties-map">Shoulder Cuff Repairs</a></li>
-                    <li><a href="#specialties-map">Hip replacements</a></li>
-                    <li><a href="#specialties-map">Limb Decompressions</a></li>
-                    <li><a href="#stepper">Arthroscopy Protocols</a></li>
+            
+            <div class="footer-links-column">
+                <h4 class="footer-column-title">Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="#about">Meet Dr. Sarah</a></li>
+                    <li><a href="#services">Our Services</a></li>
+                    <li><a href="#quiz-section">Wellness Assessment</a></li>
+                    <li><a href="#testimonials">Patient Reviews</a></li>
+                    <li><a href="#faqs">Common FAQs</a></li>
                 </ul>
             </div>
-            <div class="footer-contact">
-                <h4>Clinic Contacts</h4>
-                <p>
-                    <strong>Address:</strong> 8A Jyoti Nagar, Jalandhar, Punjab 144403
-                </p>
-                <p>
-                    <strong>Contact Line:</strong> +91 98881 50800
+
+            <div class="footer-disclaimer-column">
+                <h4 class="footer-column-title">Medical Disclaimer</h4>
+                <p class="disclaimer-text">
+                    The information provided on this website is for educational and informational purposes only and does not constitute medical advice, diagnosis, or treatment. Always consult with Dr. Jenkins or another qualified health provider regarding medical conditions.
                 </p>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 Dr. Manish Bansal. All Rights Reserved. Patient Intake Portal.</p>
-            <div class="footer-bottom-links">
-                <a href="#book">Registration Intake</a>
-                <a href="#home">Back to Top &uarr;</a>
+            <div class="container footer-bottom-container">
+                <p>&copy; 2026 Dr. Sarah Jenkins, MD. All rights reserved. Professional solo medical practice.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
             </div>
         </div>
     </footer>
 
-    <!-- Three.js (3D engine) -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    
-    <!-- GSAP Animation Libraries -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    
-    <!-- Main JS Code Logic -->
-    <script src="main.js"></script>
+    <!-- Booking Confirmation Success Modal -->
+    <div class="modal-overlay" id="success-modal" aria-hidden="true">
+        <div class="modal-card">
+            <div class="modal-icon">✓</div>
+            <h3 class="modal-title">Consultation Request Received!</h3>
+            <p class="modal-desc">
+                Thank you for reaching out, <span id="conf-patient-name" class="highlight-bold">Patient</span>. Dr. Jenkins' team has temporarily reserved your slot for:
+            </p>
+            <div class="confirmation-summary-box">
+                <p><strong>Service:</strong> <span id="conf-service">Preventive Care</span></p>
+                <p><strong>Date/Time:</strong> <span id="conf-datetime">July 10, 2026 at 11:00 AM</span></p>
+                <p><strong>Type:</strong> <span id="conf-type">In-Person Visit</span></p>
+            </div>
+            <p class="modal-footer-text">
+                We will text or call you at <span id="conf-phone">your number</span> within 2 business hours to finalize registration.
+            </p>
+            <button type="button" class="btn btn-primary modal-close-btn" id="close-modal-btn">Awesome, Thank You!</button>
+        </div>
+    </div>
+
+    <!-- Floating Sticky Contact Bar for Mobile Devices -->
+    <div class="floating-mobile-bar" id="mobile-bar">
+        <a href="tel:8002345678" class="mobile-bar-action bar-call">
+            <span class="bar-icon">📞</span>
+            <span>Call Practice</span>
+        </a>
+        <a href="#booking" class="mobile-bar-action bar-book">
+            <span class="bar-icon">📅</span>
+            <span>Book Now</span>
+        </a>
+    </div>
+
+    <!-- Javascript Actions -->
+    <script src="app.js"></script>
 </body>
 </html>
