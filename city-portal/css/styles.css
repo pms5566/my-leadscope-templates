@@ -507,7 +507,7 @@ footer details summary::-webkit-details-marker {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(11, 25, 46, 0.95) 0%, rgba(11, 25, 46, 0.6) 60%, rgba(11, 25, 46, 0.3) 100%);
+  background: linear-gradient(to top, rgba(11, 25, 46, 0.95) 0%, rgba(11, 25, 46, 0.5) 25%, rgba(11, 25, 46, 0) 50%);
   pointer-events: none;
   z-index: 1;
 }
@@ -524,7 +524,16 @@ footer details summary::-webkit-details-marker {
 }
 
 .hero-bg-slide.opacity-100 {
-  opacity: 0.45 !important; /* dark tint overlay effect matching the mockup */
+  opacity: 1 !important; /* 100% crystal-clear brightness */
+}
+
+/* Contrast text shadows for clear readability over bright photos */
+.hero-glass-card h1 {
+  text-shadow: 0 4px 16px rgba(0, 0, 0, 0.7) !important;
+}
+
+.hero-glass-card p {
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6) !important;
 }
 
 /* Mobile-only height adjustments */
