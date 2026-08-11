@@ -85,6 +85,7 @@ export function updateHeaderStyle(activePage = null) {
   const header = document.getElementById('main-header');
   const logoText = document.getElementById('header-logo-text');
   const logoSub = document.getElementById('header-logo-sub');
+  const logoIconBox = document.getElementById('header-logo-icon-box');
   const nav = document.querySelector('nav');
   const hamburger = document.getElementById('hamburger-btn');
   
@@ -96,16 +97,17 @@ export function updateHeaderStyle(activePage = null) {
   // Preserve header visibility transition state
   const isHidden = header.classList.contains('header-hidden');
 
-  if (currentPage === 'home' && scrollTop <= 30) {
-    // 1. Transparent style at top of Homepage
+  if (currentPage === 'home') {
+    // 1. ALWAYS Transparent style on Homepage (even when scrolling down)
     header.className = `fixed top-0 left-0 right-0 z-50 bg-transparent border-b border-transparent transition-all duration-300 py-6${isHidden ? ' header-hidden' : ''}`;
     
     logoText.className = "text-lg font-black tracking-widest font-headings leading-none text-white transition-colors";
     if (logoSub) logoSub.className = "text-[9px] tracking-wider uppercase font-semibold mt-1 text-slate-300 transition-colors";
+    if (logoIconBox) logoIconBox.className = "w-10 h-10 rounded-xl border border-white/25 flex items-center justify-center text-white transition-all bg-transparent";
     nav.className = "hidden lg:flex items-center gap-8 text-sm font-semibold tracking-wide uppercase text-white/90";
     hamburger.className = "lg:hidden flex flex-col justify-between w-6 h-4 text-white";
   } else {
-    // 2. Solid styling on scroll or on other sub-pages
+    // 2. Solid styling on other sub-pages
     const isDark = document.documentElement.classList.contains('dark');
     
     if (isDark) {
@@ -113,6 +115,7 @@ export function updateHeaderStyle(activePage = null) {
       
       logoText.className = "text-lg font-black tracking-widest font-headings leading-none text-white transition-colors";
       if (logoSub) logoSub.className = "text-[9px] tracking-wider uppercase font-semibold mt-1 text-slate-400 transition-colors";
+      if (logoIconBox) logoIconBox.className = "w-10 h-10 rounded-xl border border-brandGold/30 flex items-center justify-center text-brandGold transition-all bg-brandGold/10";
       nav.className = "hidden lg:flex items-center gap-8 text-sm font-semibold tracking-wide uppercase text-slate-300";
       hamburger.className = "lg:hidden flex flex-col justify-between w-6 h-4 text-white";
     } else {
@@ -120,6 +123,7 @@ export function updateHeaderStyle(activePage = null) {
       
       logoText.className = "text-lg font-black tracking-widest font-headings leading-none text-[#0f172a] transition-colors";
       if (logoSub) logoSub.className = "text-[9px] tracking-wider uppercase font-semibold mt-1 text-slate-500 transition-colors";
+      if (logoIconBox) logoIconBox.className = "w-10 h-10 rounded-xl border border-brandGold/30 flex items-center justify-center text-brandGold transition-all bg-brandGold/10";
       nav.className = "hidden lg:flex items-center gap-8 text-sm font-semibold tracking-wide uppercase text-slate-700";
       hamburger.className = "lg:hidden flex flex-col justify-between w-6 h-4 text-[#0f172a]";
     }

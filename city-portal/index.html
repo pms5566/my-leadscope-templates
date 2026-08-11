@@ -36,7 +36,7 @@
     <div class="max-w-7xl mx-auto px-4 md:px-8 flex items-center justify-between">
       <!-- Logo -->
       <a href="#home" class="flex items-center gap-3 group cursor-pointer" onclick="navigateTo('home')">
-        <div class="w-10 h-10 rounded-xl bg-brandGold/15 border border-brandGold/35 flex items-center justify-center text-brandGold transition-transform group-hover:scale-105">
+        <div id="header-logo-icon-box" class="w-10 h-10 rounded-xl border border-white/25 flex items-center justify-center text-white transition-all group-hover:scale-105">
           <i class="fa-solid fa-city text-xl"></i>
         </div>
         <div class="flex flex-col">
@@ -57,12 +57,12 @@
       <!-- Right Header Actions (Dark Mode, Submit, Mobile Hamburger) -->
       <div class="flex items-center gap-4">
         <!-- Theme Toggle -->
-        <button id="theme-toggle" class="w-10 h-10 rounded-full border border-slate-300 dark:border-slate-700 flex items-center justify-center text-slate-700 dark:text-slate-300 hover:text-brandGold hover:border-brandGold dark:hover:text-brandGold dark:hover:border-brandGold transition-colors" aria-label="Toggle Dark Mode">
+        <button id="theme-toggle" class="lg:hidden w-10 h-10 rounded-full border border-slate-300 dark:border-slate-700 flex items-center justify-center text-slate-700 dark:text-slate-300 hover:text-brandGold hover:border-brandGold dark:hover:text-brandGold dark:hover:border-brandGold transition-colors" aria-label="Toggle Dark Mode">
           <i class="fa-solid fa-moon text-lg" id="theme-toggle-icon"></i>
         </button>
 
         <!-- Submit Button (Desktop) -->
-        <button class="hidden sm:inline-flex btn-gold text-sm shadow-md" onclick="navigateTo('contribute')">
+        <button class="hidden sm:inline-flex lg:hidden btn-gold text-sm shadow-md" onclick="navigateTo('contribute')">
           <i class="fa-solid fa-plus-circle mr-2"></i>Submit Listing
         </button>
 
