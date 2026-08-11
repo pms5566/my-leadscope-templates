@@ -116,36 +116,51 @@ window.addEventListener('DOMContentLoaded', () => {
 
 // Render feeds helper for homepage previews
 export function renderHomeFeeds() {
-  // 1. News Preview (Most recent 3 items)
-  const newsContainer = document.getElementById('home-news-feed');
+  // 1. News Preview (Most recent 2 items rendered as premium cards)
+  const newsContainer = document.getElementById('home-news-grid');
   if (newsContainer) {
     newsContainer.innerHTML = '';
-    newsDb.slice(0, 3).forEach(item => {
+    newsDb.slice(0, 2).forEach(item => {
       newsContainer.innerHTML += `
-        <div class="p-4 rounded-xl border border-slate-100 dark:border-slate-800 bg-white dark:bg-[#1e293b] flex gap-4 hover:shadow-md transition-shadow cursor-pointer" onclick="openNewsDetailModal(${item.id})">
-          <img class="w-20 h-20 rounded-lg object-cover" src="${item.image}" alt="${item.title}">
-          <div class="flex-1 min-w-0">
-            <span class="text-[9px] font-bold px-2 py-0.5 rounded ${item.badgeClass}">${item.category}</span>
-            <h4 class="font-bold text-sm text-slate-800 dark:text-white mt-1 hover:text-brandGold transition-colors truncate font-headings uppercase">${item.title}</h4>
-            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 line-clamp-1">${item.summary}</p>
+        <article class="bg-white dark:bg-[#1e293b] border border-slate-100 dark:border-slate-800 rounded-xl overflow-hidden hover:shadow-md transition-shadow cursor-pointer flex flex-col justify-between" onclick="openNewsDetailModal(${item.id})">
+          <div class="relative h-48 overflow-hidden bg-slate-100 dark:bg-slate-900">
+            <img class="w-full h-full object-cover transition-transform hover:scale-105" src="${item.image}" alt="${item.title}">
+            <span class="absolute top-3 left-3 bg-brandBlue text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase">${item.category}</span>
           </div>
-        </div>
+          <div class="p-5 flex-1 flex flex-col justify-between text-black dark:text-white">
+            <div class="space-y-2">
+              <h3 class="text-base font-bold font-headings uppercase hover:text-brandGold transition-colors leading-tight line-clamp-2">${item.title}</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400 line-clamp-2">${item.summary}</p>
+            </div>
+            <div class="text-[10px] text-slate-400 font-semibold border-t dark:border-slate-850 pt-3 mt-4 flex justify-between">
+              <span>${item.date}</span>
+              <span>${item.readTime}</span>
+            </div>
+          </div>
+        </article>
       `;
     });
   }
 
-  // 2. Directory Preview (Top 2 featured listings)
-  const dirContainer = document.getElementById('home-dir-feed');
-  if (dirContainer) {
-    dirContainer.innerHTML = '';
-    directoryDb.slice(0, 2).forEach(item => {
-      dirContainer.innerHTML += `
-        <div class="p-5 rounded-xl border border-slate-100 dark:border-slate-800 bg-white dark:bg-[#1e293b] flex gap-4 hover:shadow-md transition-shadow cursor-pointer" onclick="openBusinessDetailModal(${item.id})">
-          <img class="w-14 h-14 rounded-full border object-cover" src="${item.logo}" alt="${item.name}">
-          <div class="flex-1 min-w-0">
-            <h4 class="font-bold text-sm text-slate-800 dark:text-white hover:text-brandGold transition-colors truncate font-headings uppercase">${item.name}</h4>
-            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 line-clamp-1">${item.tagline}</p>
-            <div class="text-[10px] text-brandGold font-semibold mt-2"><i class="fa-solid fa-map-pin mr-1"></i>${item.ward} • <i class="fa-solid fa-star mr-1"></i>${item.rating}</div>
+  // 2. Events Preview (Most recent 3 items rendered as dynamic cards)
+  const eventsContainer = document.getElementById('home-events-list');
+  if (eventsContainer) {
+    eventsContainer.innerHTML = '';
+    eventsDb.slice(0, 3).forEach(item => {
+      const parts = item.date.split(' ');
+      const month = parts[0] || 'Aug';
+      const day = parts[1] ? parts[1].replace(',', '') : '12';
+      
+      eventsContainer.innerHTML += `
+        <div class="p-4 rounded-xl border border-slate-100 dark:border-slate-800 bg-white dark:bg-[#1e293b] flex gap-4 hover:shadow-md transition-all cursor-pointer" onclick="navigateTo('events')">
+          <div class="w-16 h-16 rounded-lg bg-brandGold/10 flex flex-col items-center justify-center text-brandGold shrink-0 font-bold">
+            <span class="text-[10px] uppercase leading-none text-slate-400 dark:text-slate-500 font-medium mb-1">${month}</span>
+            <span class="text-xl leading-none font-headings">${day}</span>
+          </div>
+          <div class="flex-1 min-w-0 text-black dark:text-white flex flex-col justify-center">
+            <span class="text-[8px] font-bold px-1.5 py-0.5 rounded bg-brandBlue/10 text-brandBlue uppercase self-start">${item.category}</span>
+            <h4 class="font-bold text-sm truncate mt-1.5 font-headings uppercase hover:text-brandGold transition-colors">${item.title}</h4>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5 line-clamp-1">${item.desc}</p>
           </div>
         </div>
       `;
