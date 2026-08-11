@@ -530,7 +530,7 @@ footer details summary::-webkit-details-marker {
   }
 
   .hero-bg-slide.opacity-100 {
-    opacity: 0.38 !important; /* dark tint overlay effect */
+    opacity: 0.65 !important; /* dark tint overlay effect */
   }
 }
 
