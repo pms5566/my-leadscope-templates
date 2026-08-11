@@ -384,6 +384,16 @@ function navigateTo(pageId) {
     }
   });
 
+  // Highlight Sticky Mobile Bottom Nav Tab
+  const bottomTabs = document.querySelectorAll('.mobile-nav-tab');
+  bottomTabs.forEach(t => {
+    if (t.getAttribute('href') === `#${pageId}`) {
+      t.classList.add('active');
+    } else {
+      t.classList.remove('active');
+    }
+  });
+
   // Close Mobile Menu if open
   const mobileMenu = document.getElementById('mobile-menu');
   mobileMenu.classList.add('hidden');
@@ -465,10 +475,47 @@ function updateHeaderStyle(activePage = null) {
   hamburger.classList.add('text-[#0f172a]', 'dark:text-white');
 }
 
-// Scroll Event
+// Scroll Event with Auto-Hiding Sticky Header
+let lastScrollTop = 0;
+const scrollThreshold = 8;
+
 window.addEventListener('scroll', () => {
   updateHeaderStyle();
+  
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  const header = document.getElementById('main-header');
+  if (!header) return;
+
+  if (Math.abs(lastScrollTop - scrollTop) <= scrollThreshold) {
+    return;
+  }
+
+  if (scrollTop > lastScrollTop && scrollTop > 80) {
+    // Scroll Down - hide header
+    header.classList.add('header-hidden');
+  } else {
+    // Scroll Up - show header
+    header.classList.remove('header-hidden');
+  }
+  
+  lastScrollTop = scrollTop;
 });
+
+// Setup Mobile Footer Accordions Toggle based on viewport
+function setupMobileFooterAccordions() {
+  if (window.innerWidth < 768) {
+    document.querySelectorAll('footer details').forEach(detail => {
+      detail.removeAttribute('open');
+    });
+  } else {
+    document.querySelectorAll('footer details').forEach(detail => {
+      detail.setAttribute('open', '');
+    });
+  }
+}
+
+window.addEventListener('DOMContentLoaded', setupMobileFooterAccordions);
+window.addEventListener('resize', setupMobileFooterAccordions);
 
 
 // --- DARK / LIGHT MODE ENGINE ---
@@ -1696,11 +1743,11 @@ function drawWizardFields() {
       <div class="grid grid-cols-2 gap-4">
         <div>
           <label class="block text-xs font-bold uppercase text-slate-500 mb-1.5">Contact Phone</label>
-          <input type="tel" id="form-biz-phone" placeholder="+91 98142-XXXXX" class="w-full bg-slate-50 dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800 rounded py-2.5 px-4 focus:outline-none focus:border-brandGold" required>
+          <input type="tel" id="form-biz-phone" placeholder="+91 98142-XXXXX" inputmode="tel" autocomplete="tel" class="w-full bg-slate-50 dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800 rounded py-2.5 px-4 focus:outline-none focus:border-brandGold" required>
         </div>
         <div>
           <label class="block text-xs font-bold uppercase text-slate-500 mb-1.5">Email address</label>
-          <input type="email" id="form-biz-email" placeholder="contact@shopname.com" class="w-full bg-slate-50 dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800 rounded py-2.5 px-4 focus:outline-none focus:border-brandGold" required>
+          <input type="email" id="form-biz-email" placeholder="contact@shopname.com" autocomplete="email" class="w-full bg-slate-50 dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800 rounded py-2.5 px-4 focus:outline-none focus:border-brandGold" required>
         </div>
       </div>
       <div>
@@ -1752,7 +1799,7 @@ function drawWizardFields() {
       </div>
       <div>
         <label class="block text-xs font-bold uppercase text-slate-500 mb-1.5">Contact Phone / WhatsApp</label>
-        <input type="tel" id="form-job-phone" placeholder="+91 98XXX-XXXXX" class="w-full bg-slate-50 dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800 rounded py-2.5 px-4 focus:outline-none focus:border-brandGold" required>
+        <input type="tel" id="form-job-phone" placeholder="+91 98XXX-XXXXX" inputmode="tel" autocomplete="tel" class="w-full bg-slate-50 dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800 rounded py-2.5 px-4 focus:outline-none focus:border-brandGold" required>
       </div>
       <div>
         <label class="block text-xs font-bold uppercase text-slate-500 mb-1.5">Job Specifications / Description</label>

@@ -169,8 +169,8 @@
       <!-- Pillars Section with Interactive Hover Previews (inspired by d24f16...) -->
       <div class="bg-[#111827] dark:bg-[#020617] text-white py-20 border-b border-slate-800 transition-colors">
         <div class="max-w-7xl mx-auto px-4 md:px-8">
-          <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            
+          <!-- Desktop Layout (Hidden on Mobile) -->
+          <div class="hidden lg:grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <!-- Left Side: Numbered list menu -->
             <div class="lg:col-span-6 flex flex-col">
               <span class="text-brandGold text-sm tracking-widest font-semibold uppercase mb-4">Core Directory Services</span>
@@ -224,7 +224,64 @@
                 </div>
               </div>
             </div>
+          </div>
 
+          <!-- Mobile Layout (Visible on Mobile/Tablet) -->
+          <div class="block lg:hidden">
+            <span class="text-brandGold text-sm tracking-widest font-semibold uppercase mb-3 block">Core Directory Services</span>
+            <h2 class="text-3xl mb-6 leading-tight font-headings uppercase">Everything Rajpura In One Place</h2>
+            
+            <!-- Touch Snap Carousel -->
+            <div class="mobile-snap-carousel">
+              <!-- Slide 1 -->
+              <div class="mobile-snap-item bg-[#1e293b] rounded-xl border border-slate-800 overflow-hidden flex flex-col shadow-lg" onclick="navigateTo('news')">
+                <img class="w-full h-40 object-cover opacity-90" src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=800" alt="News Preview">
+                <div class="p-5 flex-1 flex flex-col justify-between">
+                  <div>
+                    <span class="bg-brandGold text-black font-semibold text-[10px] px-2 py-0.5 rounded uppercase">NEWS</span>
+                    <h3 class="text-lg font-bold text-white mt-2 leading-tight uppercase font-headings">Local News & Bulletins</h3>
+                    <p class="text-xs text-slate-300 mt-2">Stay informed about construction, municipal updates, and emergency bulletins around Rajpura.</p>
+                  </div>
+                  <div class="text-xs text-brandGold font-semibold mt-4 flex items-center gap-1">Explore News <i class="fa-solid fa-arrow-right text-[10px]"></i></div>
+                </div>
+              </div>
+              <!-- Slide 2 -->
+              <div class="mobile-snap-item bg-[#1e293b] rounded-xl border border-slate-800 overflow-hidden flex flex-col shadow-lg" onclick="navigateTo('directory')">
+                <img class="w-full h-40 object-cover opacity-90" src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?q=80&w=800" alt="Directory Preview">
+                <div class="p-5 flex-1 flex flex-col justify-between">
+                  <div>
+                    <span class="bg-brandGold text-black font-semibold text-[10px] px-2 py-0.5 rounded uppercase">DIRECTORY</span>
+                    <h3 class="text-lg font-bold text-white mt-2 leading-tight uppercase font-headings">Business Directory</h3>
+                    <p class="text-xs text-slate-300 mt-2">Access contact details, locations, services lists, and opening timings for local businesses.</p>
+                  </div>
+                  <div class="text-xs text-brandGold font-semibold mt-4 flex items-center gap-1">Explore Directory <i class="fa-solid fa-arrow-right text-[10px]"></i></div>
+                </div>
+              </div>
+              <!-- Slide 3 -->
+              <div class="mobile-snap-item bg-[#1e293b] rounded-xl border border-slate-800 overflow-hidden flex flex-col shadow-lg" onclick="navigateTo('jobs')">
+                <img class="w-full h-40 object-cover opacity-90" src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?q=80&w=800" alt="Jobs Preview">
+                <div class="p-5 flex-1 flex flex-col justify-between">
+                  <div>
+                    <span class="bg-brandGold text-black font-semibold text-[10px] px-2 py-0.5 rounded uppercase">CAREERS</span>
+                    <h3 class="text-lg font-bold text-white mt-2 leading-tight uppercase font-headings">Local Job Board</h3>
+                    <p class="text-xs text-slate-300 mt-2">Apply directly via phone or WhatsApp to factory, retail, clerical, and local startup vacancies.</p>
+                  </div>
+                  <div class="text-xs text-brandGold font-semibold mt-4 flex items-center gap-1">Explore Jobs <i class="fa-solid fa-arrow-right text-[10px]"></i></div>
+                </div>
+              </div>
+              <!-- Slide 4 -->
+              <div class="mobile-snap-item bg-[#1e293b] rounded-xl border border-slate-800 overflow-hidden flex flex-col shadow-lg" onclick="navigateTo('events')">
+                <img class="w-full h-40 object-cover opacity-90" src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=800" alt="Events Preview">
+                <div class="p-5 flex-1 flex flex-col justify-between">
+                  <div>
+                    <span class="bg-brandGold text-black font-semibold text-[10px] px-2 py-0.5 rounded uppercase">CALENDAR</span>
+                    <h3 class="text-lg font-bold text-white mt-2 leading-tight uppercase font-headings">Events Calendar</h3>
+                    <p class="text-xs text-slate-300 mt-2">Track local matches, Teej melas, and commercial discounts across the monthly layout grids.</p>
+                  </div>
+                  <div class="text-xs text-brandGold font-semibold mt-4 flex items-center gap-1">Explore Events <i class="fa-solid fa-arrow-right text-[10px]"></i></div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -981,7 +1038,7 @@
           </div>
           <div>
             <label class="block text-xs font-bold uppercase text-slate-500 mb-1.5">Contact Phone / WhatsApp</label>
-            <input type="tel" id="drawer-job-phone" placeholder="e.g. +91 98765-43210" class="w-full bg-slate-100 dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800 rounded py-2 px-3 focus:outline-none focus:border-brandGold" required>
+            <input type="tel" id="drawer-job-phone" placeholder="e.g. +91 98765-43210" inputmode="tel" autocomplete="tel" class="w-full bg-slate-100 dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800 rounded py-2 px-3 focus:outline-none focus:border-brandGold" required>
           </div>
           <div>
             <label class="block text-xs font-bold uppercase text-slate-500 mb-1.5">Job Description & Requirements</label>
@@ -1029,18 +1086,34 @@
   </div>
 
 
-  <!-- STICKY MOBILE BOTTOM CTA BAR -->
-  <div class="fixed bottom-0 left-0 right-0 z-40 lg:hidden flex justify-between items-center p-3 bg-white/95 dark:bg-[#1e293b]/95 backdrop-blur border-t border-slate-200 dark:border-slate-800 shadow-lg">
-    <div class="text-xs font-bold text-slate-600 dark:text-slate-300">Ready to contribute?</div>
-    <div class="flex gap-2">
-      <a href="tel:+919876543210" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold px-4 py-2 rounded flex items-center gap-1.5 shadow-sm">
-        <i class="fa-solid fa-phone"></i> Call Portal
-      </a>
-      <button onclick="navigateTo('contribute')" class="btn-gold text-xs px-4 py-2 font-semibold">
-        <i class="fa-solid fa-plus-circle"></i> Add Listing
-      </button>
-    </div>
+  <!-- STICKY MOBILE BOTTOM NAVIGATION BAR -->
+  <div class="mobile-bottom-nav lg:hidden">
+    <a href="#home" class="mobile-nav-tab active" id="m-tab-home" onclick="navigateTo('home')">
+      <i class="fa-solid fa-house"></i>
+      <span>Home</span>
+    </a>
+    <a href="#news" class="mobile-nav-tab" id="m-tab-news" onclick="navigateTo('news')">
+      <i class="fa-solid fa-newspaper"></i>
+      <span>News</span>
+    </a>
+    <a href="#directory" class="mobile-nav-tab" id="m-tab-directory" onclick="navigateTo('directory')">
+      <i class="fa-solid fa-store"></i>
+      <span>Directory</span>
+    </a>
+    <a href="#jobs" class="mobile-nav-tab" id="m-tab-jobs" onclick="navigateTo('jobs')">
+      <i class="fa-solid fa-briefcase"></i>
+      <span>Jobs</span>
+    </a>
+    <a href="#events" class="mobile-nav-tab" id="m-tab-events" onclick="navigateTo('events')">
+      <i class="fa-solid fa-calendar-days"></i>
+      <span>Events</span>
+    </a>
   </div>
+
+  <!-- FLOATING WHATSAPP TIP & SUPPORT BUTTON -->
+  <a href="https://wa.me/919876543210?text=Hi%20MyRajpura%20I%20have%20a%20local%20update/listing%20request" target="_blank" rel="noopener noreferrer" class="whatsapp-float pulse-glow" aria-label="Send WhatsApp News Tip">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
 
 
   <!-- FOOTER SECTION (Inspired by YorkNew 000.webp) -->
@@ -1054,40 +1127,40 @@
           <h4 class="text-xl font-bold uppercase tracking-wider font-headings">Stay Updated</h4>
           <p class="text-slate-400 text-sm">Subscribe to receive breaking news alerts, job openings, and local deals directly in your email.</p>
           <div class="flex gap-2">
-            <input type="email" placeholder="Enter your email" class="bg-slate-800 border border-slate-700 rounded py-2 px-3 text-sm focus:outline-none focus:border-brandGold w-full">
+            <input type="email" placeholder="Enter your email" autocomplete="email" class="bg-slate-800 border border-slate-700 rounded py-2 px-3 text-sm focus:outline-none focus:border-brandGold w-full">
             <button class="btn-gold py-2 px-4 text-sm font-semibold whitespace-nowrap">Subscribe</button>
           </div>
         </div>
 
         <!-- Middle Columns: Site Maps -->
-        <div class="md:col-span-6 grid grid-cols-2 sm:grid-cols-3 gap-6">
-          <div>
-            <h5 class="text-brandGold text-xs font-bold uppercase tracking-widest mb-3">Directory</h5>
+        <div class="md:col-span-6 grid grid-cols-1 sm:grid-cols-3 gap-6">
+          <details class="group md:open pb-4 border-b border-slate-800 md:border-b-0" open>
+            <summary class="text-brandGold text-xs font-bold uppercase tracking-widest mb-3 font-headings">Directory</summary>
             <ul class="text-slate-400 text-sm space-y-2">
               <li><a href="#directory" class="hover:text-brandGold" onclick="navigateTo('directory')">Restaurants</a></li>
               <li><a href="#directory" class="hover:text-brandGold" onclick="navigateTo('directory')">Retail Shops</a></li>
               <li><a href="#directory" class="hover:text-brandGold" onclick="navigateTo('directory')">Medical Clinics</a></li>
               <li><a href="#directory" class="hover:text-brandGold" onclick="navigateTo('directory')">Local Craft</a></li>
             </ul>
-          </div>
-          <div>
-            <h5 class="text-brandGold text-xs font-bold uppercase tracking-widest mb-3">Community</h5>
+          </details>
+          <details class="group md:open pb-4 border-b border-slate-800 md:border-b-0" open>
+            <summary class="text-brandGold text-xs font-bold uppercase tracking-widest mb-3 font-headings">Community</summary>
             <ul class="text-slate-400 text-sm space-y-2">
               <li><a href="#news" class="hover:text-brandGold" onclick="navigateTo('news')">Local News</a></li>
               <li><a href="#events" class="hover:text-brandGold" onclick="navigateTo('events')">Events Schedules</a></li>
               <li><a href="#jobs" class="hover:text-brandGold" onclick="navigateTo('jobs')">Jobs & Careers</a></li>
               <li><a href="#contribute" class="hover:text-brandGold" onclick="navigateTo('contribute')">Submit Listing</a></li>
             </ul>
-          </div>
-          <div>
-            <h5 class="text-brandGold text-xs font-bold uppercase tracking-widest mb-3">Support</h5>
+          </details>
+          <details class="group md:open pb-4 md:pb-0" open>
+            <summary class="text-brandGold text-xs font-bold uppercase tracking-widest mb-3 font-headings">Support</summary>
             <ul class="text-slate-400 text-sm space-y-2">
               <li><a href="#home" class="hover:text-brandGold" onclick="navigateTo('home')">About Portal</a></li>
               <li><a href="#home" class="hover:text-brandGold" onclick="navigateTo('home')">Contact Us</a></li>
               <li><a href="#home" class="hover:text-brandGold" onclick="navigateTo('home')">Privacy Policy</a></li>
               <li><a href="#home" class="hover:text-brandGold" onclick="navigateTo('home')">Terms of Use</a></li>
             </ul>
-          </div>
+          </details>
         </div>
 
         <!-- Right Side: Social Media handles -->
