@@ -84,22 +84,68 @@ export function navigateTo(pageId) {
 export function updateHeaderStyle(activePage = null) {
   const header = document.getElementById('main-header');
   const logoText = document.getElementById('header-logo-text');
+  const logoSub = document.getElementById('header-logo-sub');
   const nav = document.querySelector('nav');
   const hamburger = document.getElementById('hamburger-btn');
   
   if (!header || !logoText || !nav || !hamburger) return;
 
-  header.classList.add('shadow-md');
-  header.classList.add('bg-white', 'dark:bg-[#1e293b]');
-  
-  logoText.classList.remove('text-white');
-  logoText.classList.add('text-[#0f172a]', 'dark:text-white');
-  
-  nav.classList.remove('text-slate-200');
-  nav.classList.add('text-slate-700', 'dark:text-slate-300');
-  
-  hamburger.classList.remove('text-white');
-  hamburger.classList.add('text-[#0f172a]', 'dark:text-white');
+  const currentPage = activePage || state.currentPage;
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+  if (currentPage === 'home' && scrollTop <= 30) {
+    // Transparent style at top of Homepage
+    header.classList.remove('bg-white', 'dark:bg-[#1e293b]', 'bg-[#0f172a]/95', 'dark:bg-[#0f172a]/95', 'shadow-md', 'border-slate-200', 'dark:border-slate-800', 'py-4');
+    header.classList.add('bg-transparent', 'border-transparent', 'shadow-none', 'py-6');
+    
+    logoText.classList.remove('text-[#0f172a]', 'dark:text-white');
+    logoText.classList.add('text-white');
+    if (logoSub) {
+      logoSub.classList.remove('text-slate-500', 'dark:text-slate-400');
+      logoSub.classList.add('text-slate-300');
+    }
+    
+    nav.classList.remove('text-slate-700', 'dark:text-slate-300');
+    nav.classList.add('text-white/90');
+    
+    hamburger.classList.remove('text-[#0f172a]', 'dark:text-white');
+    hamburger.classList.add('text-white');
+  } else {
+    // Solid styling on scroll or on other sub-pages
+    header.classList.add('shadow-md', 'py-4');
+    header.classList.remove('bg-transparent', 'border-transparent', 'shadow-none', 'py-5', 'py-6');
+    
+    if (document.documentElement.classList.contains('dark')) {
+      header.classList.add('bg-[#0f172a]/95', 'dark:bg-[#0f172a]/95', 'border-slate-800');
+      header.classList.remove('bg-white', 'border-slate-200');
+      
+      logoText.classList.remove('text-[#0f172a]', 'text-white');
+      logoText.classList.add('text-white');
+      if (logoSub) {
+        logoSub.classList.remove('text-slate-300', 'text-slate-500');
+        logoSub.classList.add('text-slate-400');
+      }
+      
+      nav.classList.remove('text-slate-700', 'text-white/90');
+      nav.classList.add('text-slate-300');
+    } else {
+      header.classList.add('bg-white', 'border-slate-200');
+      header.classList.remove('bg-[#0f172a]/95', 'dark:bg-[#0f172a]/95', 'border-slate-800');
+      
+      logoText.classList.remove('text-white', 'dark:text-white');
+      logoText.classList.add('text-[#0f172a]');
+      if (logoSub) {
+        logoSub.classList.remove('text-slate-300', 'dark:text-slate-400');
+        logoSub.classList.add('text-slate-500');
+      }
+      
+      nav.classList.remove('text-white/90', 'dark:text-slate-300');
+      nav.classList.add('text-slate-700');
+    }
+    
+    hamburger.classList.remove('text-white');
+    hamburger.classList.add('text-[#0f172a]', 'dark:text-white');
+  }
 }
 
 // Scroll Event with Auto-Hiding Sticky Header
