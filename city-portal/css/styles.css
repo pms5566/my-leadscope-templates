@@ -510,18 +510,49 @@ footer details summary::-webkit-details-marker {
     position: relative;
   }
 
-  /* Dark overlay for text readability */
-  .hero-section-container::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(11, 25, 46, 0.9) 0%, rgba(11, 25, 46, 0.6) 60%, rgba(11, 25, 46, 0.3) 100%);
-    pointer-events: none;
-    z-index: 1;
+  /* Sleek semi-transparent glass card for mobile readability */
+  .hero-glass-card {
+    background-color: rgba(11, 25, 46, 0.72) !important;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 16px !important;
+    padding: 24px !important;
+    width: 100% !important;
+    max-width: 480px !important;
+    margin: 0 auto !important;
+    z-index: 10 !important;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3) !important;
   }
 
-  /* Make background slideshow sharp and clean on mobile */
+  .hero-glass-card h1 {
+    font-size: 2.25rem !important; /* text-4xl equivalent */
+    margin-bottom: 12px !important;
+    line-height: 1.1 !important;
+  }
+
+  .hero-glass-card p {
+    font-size: 0.875rem !important; /* text-sm equivalent */
+    margin-bottom: 16px !important;
+    line-height: 1.5 !important;
+  }
+
+  /* Make nested stats bar transparent and flush inside the glass card */
+  .hero-glass-card > div.flex.gap-8 {
+    background-color: transparent !important;
+    border: none !important;
+    padding: 12px 0 0 0 !important;
+    margin-top: 12px !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    max-width: 100% !important;
+  }
+
+  /* Make background slideshow double-layered on mobile (uncropped center + blurred borders) */
   .hero-bg-slide {
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
     filter: none !important;
     transform: none !important;
     opacity: 0 !important;
@@ -529,8 +560,21 @@ footer details summary::-webkit-details-marker {
     transition: opacity 1s ease-in-out !important;
   }
 
+  /* Background blurred copy of the image to fill the empty space around contain */
+  .hero-bg-slide::before {
+    content: '';
+    position: absolute;
+    inset: -20px;
+    background-image: inherit; /* Inherits background-image style from inline HTML attribute */
+    background-size: cover;
+    background-position: center;
+    filter: blur(24px) brightness(0.4); /* Blur and darken for background filling */
+    z-index: -1;
+  }
+
+  /* When slide is active, make it crystal clear (100% opacity) */
   .hero-bg-slide.opacity-100 {
-    opacity: 0.65 !important; /* dark tint overlay effect */
+    opacity: 1 !important;
   }
 }
 
