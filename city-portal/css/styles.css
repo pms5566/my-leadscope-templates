@@ -507,6 +507,30 @@ footer details summary::-webkit-details-marker {
     align-items: center;
     padding-top: 0 !important;
     padding-bottom: 0 !important;
+    position: relative;
+  }
+
+  /* Dark overlay for text readability */
+  .hero-section-container::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(11, 25, 46, 0.9) 0%, rgba(11, 25, 46, 0.6) 60%, rgba(11, 25, 46, 0.3) 100%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Make background slideshow sharp and clean on mobile */
+  .hero-bg-slide {
+    filter: none !important;
+    transform: none !important;
+    opacity: 0 !important;
+    z-index: 0 !important;
+    transition: opacity 1s ease-in-out !important;
+  }
+
+  .hero-bg-slide.opacity-100 {
+    opacity: 0.38 !important; /* dark tint overlay effect */
   }
 }
 
