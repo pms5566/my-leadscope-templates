@@ -1,7 +1,9 @@
-// --- BUSINESS DIRECTORY LOGIC ---
-let activeDirectoryCategory = 'All';
+import { directoryDb } from './data.js';
 
-function renderDirectoryGrid() {
+// --- BUSINESS DIRECTORY LOGIC ---
+export let activeDirectoryCategory = 'All';
+
+export function renderDirectoryGrid() {
   const container = document.getElementById('directory-grid-container');
   if (!container) return;
 
@@ -34,7 +36,7 @@ function renderDirectoryGrid() {
   if (filtered.length === 0) {
     container.innerHTML = `
       <div class="col-span-full py-16 text-center text-slate-500">
-        <i class="fa-solid fa-store-slash text-4xl mb-3 text-slate-300"></i>
+        <i class="fa-solid fa-store-slash text-4xl mb-3 text-slate-350"></i>
         <p>No verified businesses found matching your criteria.</p>
       </div>
     `;
@@ -45,7 +47,7 @@ function renderDirectoryGrid() {
     container.innerHTML += `
       <div class="bg-white dark:bg-[#1e293b] border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow relative flex flex-col justify-between group cursor-pointer" onclick="openBusinessDetailModal(${item.id})">
         <div>
-          <!-- Top Cover Banner -->
+          <!-- Cover Banner -->
           <div class="relative w-full h-44 overflow-hidden bg-slate-100">
             <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="${item.cover}" alt="${item.name}">
             <span class="absolute top-3 left-3 bg-[#111827]/75 backdrop-blur text-white text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider">FEATURED</span>
@@ -53,7 +55,7 @@ function renderDirectoryGrid() {
 
           <!-- Content Block -->
           <div class="p-6 relative mt-6">
-            <!-- Floating Circular Logo -->
+            <!-- Floating Logo -->
             <div class="absolute -top-12 left-6 w-14 h-14 rounded-full border-2 border-white dark:border-[#1e293b] shadow-md bg-white overflow-hidden">
               <img class="w-full h-full object-cover" src="${item.logo}" alt="Logo">
             </div>
@@ -82,27 +84,27 @@ function renderDirectoryGrid() {
   });
 }
 
-function searchDirectory() {
+export function searchDirectory() {
   renderDirectoryGrid();
 }
 
-// Add keypress listener to search inputs
-const searchInput = document.getElementById('directory-search-input');
-if (searchInput) {
-  searchInput.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') searchDirectory();
-  });
+export function initDirectoryListeners() {
+  const searchInput = document.getElementById('directory-search-input');
+  if (searchInput) {
+    searchInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') searchDirectory();
+    });
+  }
+
+  const wardSelect = document.getElementById('directory-ward-select');
+  if (wardSelect) {
+    wardSelect.addEventListener('change', searchDirectory);
+  }
 }
 
-const wardSelect = document.getElementById('directory-ward-select');
-if (wardSelect) {
-  wardSelect.addEventListener('change', searchDirectory);
-}
-
-function filterDirectoryCategory(category, buttonEl) {
+export function filterDirectoryCategory(category, buttonEl) {
   activeDirectoryCategory = category;
   
-  // Highlight active button
   const buttons = document.querySelectorAll('.category-filter-btn');
   buttons.forEach(btn => {
     btn.className = "category-filter-btn px-4 py-2 rounded-full border border-slate-300 dark:border-slate-700 hover:border-brandGold hover:text-brandGold text-xs font-semibold uppercase flex items-center gap-2 whitespace-nowrap";
@@ -112,13 +114,11 @@ function filterDirectoryCategory(category, buttonEl) {
   renderDirectoryGrid();
 }
 
-
 // --- BUSINESS DETAILS MODAL ---
-function openBusinessDetailModal(bizId) {
+export function openBusinessDetailModal(bizId) {
   const biz = directoryDb.find(b => b.id === parseInt(bizId));
   if (!biz) return;
 
-  // Header Cover and Logo Overlap
   const headerContainer = document.getElementById('modal-business-header');
   if (headerContainer) {
     headerContainer.innerHTML = `
@@ -145,11 +145,9 @@ function openBusinessDetailModal(bizId) {
     `;
   }
 
-  // Body Content
   const modalBizDesc = document.getElementById('modal-business-desc');
   if (modalBizDesc) modalBizDesc.textContent = biz.desc;
 
-  // Services list
   const servicesContainer = document.getElementById('modal-business-services');
   if (servicesContainer) {
     servicesContainer.innerHTML = '';
@@ -163,7 +161,6 @@ function openBusinessDetailModal(bizId) {
     });
   }
 
-  // Gallery grid
   const galleryContainer = document.getElementById('modal-business-gallery');
   if (galleryContainer) {
     galleryContainer.innerHTML = '';
@@ -174,7 +171,6 @@ function openBusinessDetailModal(bizId) {
     });
   }
 
-  // Contacts Sidebar
   const modalBizContactList = document.getElementById('modal-business-contact-list');
   if (modalBizContactList) {
     modalBizContactList.innerHTML = `
@@ -185,11 +181,9 @@ function openBusinessDetailModal(bizId) {
     `;
   }
 
-  // Main Call Button href
   const ctaBtn = document.getElementById('modal-business-cta');
   if (ctaBtn) ctaBtn.setAttribute('href', `tel:${biz.phone}`);
 
-  // Mock Map container
   const modalBizMap = document.getElementById('modal-business-map');
   if (modalBizMap) {
     modalBizMap.innerHTML = `
@@ -207,7 +201,7 @@ function openBusinessDetailModal(bizId) {
   document.body.style.overflow = 'hidden';
 }
 
-function closeBusinessDetailModal() {
+export function closeBusinessDetailModal() {
   const modal = document.getElementById('business-detail-modal');
   if (modal) modal.classList.add('hidden');
   document.body.style.overflow = '';

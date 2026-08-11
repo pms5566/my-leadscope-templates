@@ -1,8 +1,10 @@
-// --- NEWS PORTAL LOGIC ---
-let newsLayout = 'grid'; // 'grid' | 'list'
-let selectedNewsFilters = [];
+import { newsDb, buzzDb, saveDatabasesToLocalStorage } from './data.js';
 
-function renderNewsFeed() {
+// --- NEWS PORTAL STATE & LOGIC ---
+export let newsLayout = 'grid'; // 'grid' | 'list'
+export let selectedNewsFilters = [];
+
+export function renderNewsFeed() {
   const container = document.getElementById('news-feed-container');
   const leadContainer = document.getElementById('news-lead-story');
   
@@ -104,11 +106,11 @@ function renderNewsFeed() {
   });
 }
 
-function searchNews() {
+export function searchNews() {
   renderNewsFeed();
 }
 
-function applyNewsFilters() {
+export function applyNewsFilters() {
   const checkboxes = document.querySelectorAll('.news-filter-checkbox');
   selectedNewsFilters = [];
   checkboxes.forEach(c => {
@@ -122,7 +124,7 @@ function applyNewsFilters() {
   renderNewsFeed();
 }
 
-function resetNewsFilters() {
+export function resetNewsFilters() {
   const newsAllCheckbox = document.getElementById('filter-news-all');
   if (newsAllCheckbox) newsAllCheckbox.checked = true;
   document.querySelectorAll('.news-filter-checkbox').forEach(c => c.checked = false);
@@ -133,18 +135,20 @@ function resetNewsFilters() {
 }
 
 // Bind news filter check box change logic
-const filterNewsAll = document.getElementById('filter-news-all');
-if (filterNewsAll) {
-  filterNewsAll.addEventListener('change', (e) => {
-    if (e.target.checked) {
-      document.querySelectorAll('.news-filter-checkbox').forEach(c => c.checked = false);
-      selectedNewsFilters = [];
-      renderNewsFeed();
-    }
-  });
+export function initNewsFilters() {
+  const filterNewsAll = document.getElementById('filter-news-all');
+  if (filterNewsAll) {
+    filterNewsAll.addEventListener('change', (e) => {
+      if (e.target.checked) {
+        document.querySelectorAll('.news-filter-checkbox').forEach(c => c.checked = false);
+        selectedNewsFilters = [];
+        renderNewsFeed();
+      }
+    });
+  }
 }
 
-function toggleNewsLayout(layout) {
+export function toggleNewsLayout(layout) {
   newsLayout = layout;
   const gridBtn = document.getElementById('btn-news-grid');
   const listBtn = document.getElementById('btn-news-list');
@@ -166,7 +170,7 @@ function toggleNewsLayout(layout) {
 }
 
 // --- NEWS DETAIL MODAL ---
-function openNewsDetailModal(newsId) {
+export function openNewsDetailModal(newsId) {
   const item = newsDb.find(n => n.id === parseInt(newsId));
   if (!item) return;
 
@@ -195,7 +199,7 @@ function openNewsDetailModal(newsId) {
   document.body.style.overflow = 'hidden'; // Lock scroll
 }
 
-function closeNewsDetailModal() {
+export function closeNewsDetailModal() {
   const modal = document.getElementById('news-detail-modal');
   if (modal) modal.classList.add('hidden');
   document.body.style.overflow = '';
@@ -203,7 +207,7 @@ function closeNewsDetailModal() {
 
 
 // --- LIVE NOTICE BOARD (BUZZ CHAT) ---
-function renderCommunityBuzz() {
+export function renderCommunityBuzz() {
   const container = document.getElementById('community-buzz-stream');
   if (!container) return;
   
@@ -230,11 +234,10 @@ function renderCommunityBuzz() {
     `;
   });
   
-  // Auto scroll to bottom
   container.scrollTop = container.scrollHeight;
 }
 
-function sendBuzzMessage(event) {
+export function sendBuzzMessage(event) {
   event.preventDefault();
   const input = document.getElementById('buzz-input');
   if (!input) return;

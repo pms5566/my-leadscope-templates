@@ -2,20 +2,20 @@
 const themeToggle = document.getElementById('theme-toggle');
 const themeIcon = document.getElementById('theme-toggle-icon');
 
-function setTheme(theme) {
+export function setTheme(theme) {
   document.documentElement.setAttribute('data-theme', theme);
   localStorage.setItem('myrajpura_theme', theme);
   
   if (theme === 'dark') {
-    themeIcon.className = "fa-solid fa-sun text-lg";
+    if (themeIcon) themeIcon.className = "fa-solid fa-sun text-lg";
     document.documentElement.classList.add('dark');
   } else {
-    themeIcon.className = "fa-solid fa-moon text-lg";
+    if (themeIcon) themeIcon.className = "fa-solid fa-moon text-lg";
     document.documentElement.classList.remove('dark');
   }
   
-  if (typeof updateHeaderStyle === 'function') {
-    updateHeaderStyle();
+  if (typeof window.updateHeaderStyle === 'function') {
+    window.updateHeaderStyle();
   }
 }
 

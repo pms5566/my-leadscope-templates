@@ -1,5 +1,5 @@
 // --- MOCK DATABASE DEFAULTS ---
-const DEFAULT_NEWS = [
+export const DEFAULT_NEWS = [
   {
     id: 5,
     category: "Municipal",
@@ -57,7 +57,7 @@ const DEFAULT_NEWS = [
   }
 ];
 
-const DEFAULT_DIRECTORY = [
+export const DEFAULT_DIRECTORY = [
   {
     id: 1,
     name: "Wills Hotels & Resorts",
@@ -170,7 +170,7 @@ const DEFAULT_DIRECTORY = [
   }
 ];
 
-const DEFAULT_JOBS = [
+export const DEFAULT_JOBS = [
   {
     id: 1,
     title: "Senior Accounts Assistant",
@@ -248,7 +248,7 @@ const DEFAULT_JOBS = [
   }
 ];
 
-const DEFAULT_EVENTS = [
+export const DEFAULT_EVENTS = [
   {
     id: 1,
     category: "Festivals",
@@ -295,7 +295,7 @@ const DEFAULT_EVENTS = [
   }
 ];
 
-const DEFAULT_BUZZ = [
+export const DEFAULT_BUZZ = [
   { sender: "Sandeep Singh", time: "10:15 AM", message: "Water supply is back in Ward 5, pressure is low though.", isSent: false },
   { sender: "Navjot MC", time: "10:48 AM", message: "MC road repair workers have arrived near Bypass road. Expect minor blocks.", isSent: false },
   { sender: "Ravi Kumar", time: "11:20 AM", message: "Anyone knows if Bassi Clinic is open today?", isSent: false },
@@ -303,7 +303,7 @@ const DEFAULT_BUZZ = [
 ];
 
 // --- PILLARS MAPPING FOR PREVIEW (Home Page) ---
-const PILLARS_PREVIEWS = [
+export const PILLARS_PREVIEWS = [
   {
     badge: "NEWS",
     title: "Breaking News & Local Incidents",
@@ -331,14 +331,14 @@ const PILLARS_PREVIEWS = [
 ];
 
 // --- LOCAL STORAGE STATE INITIALIZATION ---
-let newsDb = JSON.parse(localStorage.getItem('myrajpura_news_v4')) || DEFAULT_NEWS;
-let directoryDb = JSON.parse(localStorage.getItem('myrajpura_directory_v4')) || DEFAULT_DIRECTORY;
-let jobsDb = JSON.parse(localStorage.getItem('myrajpura_jobs_v4')) || DEFAULT_JOBS;
-let eventsDb = JSON.parse(localStorage.getItem('myrajpura_events_v4')) || DEFAULT_EVENTS;
-let buzzDb = JSON.parse(localStorage.getItem('myrajpura_buzz_v4')) || DEFAULT_BUZZ;
+export let newsDb = JSON.parse(localStorage.getItem('myrajpura_news_v4')) || DEFAULT_NEWS;
+export let directoryDb = JSON.parse(localStorage.getItem('myrajpura_directory_v4')) || DEFAULT_DIRECTORY;
+export let jobsDb = JSON.parse(localStorage.getItem('myrajpura_jobs_v4')) || DEFAULT_JOBS;
+export let eventsDb = JSON.parse(localStorage.getItem('myrajpura_events_v4')) || DEFAULT_EVENTS;
+export let buzzDb = JSON.parse(localStorage.getItem('myrajpura_buzz_v4')) || DEFAULT_BUZZ;
 
 // Save database back to persist defaults if first run
-function saveDatabasesToLocalStorage() {
+export function saveDatabasesToLocalStorage() {
   localStorage.setItem('myrajpura_news_v4', JSON.stringify(newsDb));
   localStorage.setItem('myrajpura_directory_v4', JSON.stringify(directoryDb));
   localStorage.setItem('myrajpura_jobs_v4', JSON.stringify(jobsDb));

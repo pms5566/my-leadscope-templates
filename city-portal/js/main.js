@@ -1,3 +1,104 @@
+// --- IMPORTS ---
+import { newsDb, directoryDb, PILLARS_PREVIEWS } from './data.js';
+import { state, navigateTo, updateHeaderStyle } from './navigation.js';
+import { initBeforeAfterSlider, initHeroSlideshow } from './slider.js';
+import { setTheme } from './theme.js';
+import {
+  renderNewsFeed,
+  searchNews,
+  applyNewsFilters,
+  resetNewsFilters,
+  toggleNewsLayout,
+  openNewsDetailModal,
+  closeNewsDetailModal,
+  renderCommunityBuzz,
+  sendBuzzMessage,
+  initNewsFilters
+} from './news.js';
+import {
+  renderDirectoryGrid,
+  searchDirectory,
+  filterDirectoryCategory,
+  openBusinessDetailModal,
+  closeBusinessDetailModal,
+  initDirectoryListeners
+} from './directory.js';
+import {
+  renderJobFeed,
+  setActiveJob,
+  renderJobDetails,
+  applyJobFilters,
+  resetJobFilters,
+  toggleJobDrawer,
+  submitJobDrawer
+} from './jobs.js';
+import {
+  renderEvents,
+  toggleEventsView,
+  starEvent,
+  applyEventFilters,
+  changeCalendarMonth,
+  openCalendarEventDetail
+} from './events.js';
+import {
+  initiateSubmissionWizard,
+  cancelSubmissionWizard,
+  openContributeTab,
+  navigateWizardStep,
+  handleWizardSubmit
+} from './wizard.js';
+
+// --- EXPOSE HANDLERS TO WINDOW (Bridges HTML event attributes with ES6 modules) ---
+window.navigateTo = navigateTo;
+window.updateHeaderStyle = updateHeaderStyle;
+window.setTheme = setTheme;
+
+// Homepage items
+window.changePillarPreview = changePillarPreview;
+window.openCategoryInDirectory = openCategoryInDirectory;
+
+// News items
+window.searchNews = searchNews;
+window.applyNewsFilters = applyNewsFilters;
+window.resetNewsFilters = resetNewsFilters;
+window.toggleNewsLayout = toggleNewsLayout;
+window.openNewsDetailModal = openNewsDetailModal;
+window.closeNewsDetailModal = closeNewsDetailModal;
+window.sendBuzzMessage = sendBuzzMessage;
+window.renderNewsFeed = renderNewsFeed;
+window.renderCommunityBuzz = renderCommunityBuzz;
+
+// Directory items
+window.searchDirectory = searchDirectory;
+window.filterDirectoryCategory = filterDirectoryCategory;
+window.openBusinessDetailModal = openBusinessDetailModal;
+window.closeBusinessDetailModal = closeBusinessDetailModal;
+window.renderDirectoryGrid = renderDirectoryGrid;
+
+// Jobs items
+window.setActiveJob = setActiveJob;
+window.applyJobFilters = applyJobFilters;
+window.resetJobFilters = resetJobFilters;
+window.toggleJobDrawer = toggleJobDrawer;
+window.submitJobDrawer = submitJobDrawer;
+window.renderJobFeed = renderJobFeed;
+window.renderJobDetails = renderJobDetails;
+
+// Events items
+window.toggleEventsView = toggleEventsView;
+window.starEvent = starEvent;
+window.applyEventFilters = applyEventFilters;
+window.changeCalendarMonth = changeCalendarMonth;
+window.openCalendarEventDetail = openCalendarEventDetail;
+window.renderEvents = renderEvents;
+
+// Wizard items
+window.initiateSubmissionWizard = initiateSubmissionWizard;
+window.cancelSubmissionWizard = cancelSubmissionWizard;
+window.openContributeTab = openContributeTab;
+window.navigateWizardStep = navigateWizardStep;
+window.handleWizardSubmit = handleWizardSubmit;
+
 // --- APPLICATION INITIALIZATION & CORE EVENTS ---
 window.addEventListener('DOMContentLoaded', () => {
   // 1. Setup Hash SPA routing on load
@@ -7,15 +108,14 @@ window.addEventListener('DOMContentLoaded', () => {
   // 2. Initialize sub-components
   initBeforeAfterSlider();
   initHeroSlideshow();
-});
-
-window.addEventListener('hashchange', () => {
-  const pageId = window.location.hash ? window.location.hash.slice(1) : 'home';
-  navigateTo(pageId);
+  
+  // 3. Initialize module specific listeners
+  initNewsFilters();
+  initDirectoryListeners();
 });
 
 // Render feeds helper for homepage previews
-function renderHomeFeeds() {
+export function renderHomeFeeds() {
   // 1. News Preview (Most recent 3 items)
   const newsContainer = document.getElementById('home-news-feed');
   if (newsContainer) {
@@ -52,9 +152,10 @@ function renderHomeFeeds() {
     });
   }
 }
+window.renderHomeFeeds = renderHomeFeeds;
 
 // Pillar Selection (Homepage Interactive Tabs)
-function changePillarPreview(index) {
+export function changePillarPreview(index) {
   const preview = PILLARS_PREVIEWS[index];
   if (!preview) return;
 
@@ -92,7 +193,7 @@ function changePillarPreview(index) {
 }
 
 // Redirect quick filters from home to directory page
-function openCategoryInDirectory(category) {
+export function openCategoryInDirectory(category) {
   navigateTo('directory');
   const buttons = document.querySelectorAll('.category-filter-btn');
   let matchedBtn = null;

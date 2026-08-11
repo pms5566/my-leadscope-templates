@@ -1,6 +1,9 @@
+import { eventsDb, saveDatabasesToLocalStorage } from './data.js';
+import { state } from './navigation.js';
+
 // --- EVENTS CALENDAR LOGIC (Sooma 51, 52) ---
-function toggleEventsView(view) {
-  currentEventView = view;
+export function toggleEventsView(view) {
+  state.currentEventView = view;
   const btnSchedules = document.getElementById('btn-events-schedules');
   const btnCalendar = document.getElementById('btn-events-calendar');
   const schedulesCont = document.getElementById('events-schedules-container');
@@ -23,15 +26,15 @@ function toggleEventsView(view) {
   }
 }
 
-function renderEvents() {
-  if (currentEventView === 'calendar') {
+export function renderEvents() {
+  if (state.currentEventView === 'calendar') {
     renderEventsCalendar();
   } else {
     renderEventsSchedules();
   }
 }
 
-function renderEventsSchedules() {
+export function renderEventsSchedules() {
   const container = document.getElementById('events-grid-container');
   if (!container) return;
 
@@ -70,7 +73,7 @@ function renderEventsSchedules() {
           <div class="relative w-full h-40 overflow-hidden bg-slate-100">
             <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="${event.image}" alt="${event.title}">
             
-            <!-- Float Badges (Sooma 51 inspired) -->
+            <!-- Float Badges -->
             <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between">
               <span class="bg-[#111827]/75 backdrop-blur text-white text-[10px] font-bold px-2 py-0.5 rounded flex items-center gap-1.5">
                 <i class="fa-solid fa-calendar text-brandGold"></i>${event.date.split(',')[0]}
@@ -98,7 +101,7 @@ function renderEventsSchedules() {
   });
 }
 
-function starEvent(eventId) {
+export function starEvent(eventId) {
   const event = eventsDb.find(e => e.id === eventId);
   if (event) {
     event.interestCount += 1;
@@ -107,47 +110,41 @@ function starEvent(eventId) {
   }
 }
 
-function applyEventFilters() {
+export function applyEventFilters() {
   renderEvents();
 }
 
 // --- INTERACTIVE MONTHLY CALENDAR GRID (Sooma 52) ---
-function changeCalendarMonth(offset) {
-  currentCalendarMonth += offset;
-  if (currentCalendarMonth < 0) {
-    currentCalendarMonth = 11;
-    currentCalendarYear -= 1;
-  } else if (currentCalendarMonth > 11) {
-    currentCalendarMonth = 0;
-    currentCalendarYear += 1;
+export function changeCalendarMonth(offset) {
+  state.currentCalendarMonth += offset;
+  if (state.currentCalendarMonth < 0) {
+    state.currentCalendarMonth = 11;
+    state.currentCalendarYear -= 1;
+  } else if (state.currentCalendarMonth > 11) {
+    state.currentCalendarMonth = 0;
+    state.currentCalendarYear += 1;
   }
   
-  // Format Month Year text
   const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   const calendarMonthYear = document.getElementById('calendar-month-year');
-  if (calendarMonthYear) calendarMonthYear.textContent = `${monthNames[currentCalendarMonth]} ${currentCalendarYear}`;
+  if (calendarMonthYear) calendarMonthYear.textContent = `${monthNames[state.currentCalendarMonth]} ${state.currentCalendarYear}`;
   
   renderEventsCalendar();
 }
 
-function renderEventsCalendar() {
+export function renderEventsCalendar() {
   const container = document.getElementById('calendar-days-container');
   if (!container) return;
   
   container.innerHTML = '';
 
-  // Get first day of month
-  const firstDayIndex = new Date(currentCalendarYear, currentCalendarMonth, 1).getDay();
-  // Adjust so Monday is 0
+  const firstDayIndex = new Date(state.currentCalendarYear, state.currentCalendarMonth, 1).getDay();
   const adjustedStartCol = firstDayIndex === 0 ? 6 : firstDayIndex - 1;
 
-  // Days in month
-  const totalDays = new Date(currentCalendarYear, currentCalendarMonth + 1, 0).getDate();
-  
-  // Days in previous month
-  const prevMonthTotalDays = new Date(currentCalendarYear, currentCalendarMonth, 0).getDate();
+  const totalDays = new Date(state.currentCalendarYear, state.currentCalendarMonth + 1, 0).getDate();
+  const prevMonthTotalDays = new Date(state.currentCalendarYear, state.currentCalendarMonth, 0).getDate();
 
-  // Draw prefix columns (Other Month days)
+  // Draw prefix columns
   for (let i = adjustedStartCol - 1; i >= 0; i--) {
     const dayNum = prevMonthTotalDays - i;
     container.innerHTML += `
@@ -159,10 +156,9 @@ function renderEventsCalendar() {
 
   // Draw current month days
   for (let day = 1; day <= totalDays; day++) {
-    // Check if this date has any events
     const dayEvents = eventsDb.filter(e => {
       const evDate = new Date(e.date);
-      const isAugustMatches = evDate.getMonth() === currentCalendarMonth && evDate.getFullYear() === currentCalendarYear;
+      const isAugustMatches = evDate.getMonth() === state.currentCalendarMonth && evDate.getFullYear() === state.currentCalendarYear;
       return isAugustMatches && e.days.includes(day);
     });
 
@@ -185,7 +181,7 @@ function renderEventsCalendar() {
     `;
   }
 
-  // Fill remaining suffix columns to complete full calendar week rows (multiple of 7)
+  // Fill remaining suffix columns
   const totalSlotsUsed = adjustedStartCol + totalDays;
   const suffixSlotsNeeded = (7 - (totalSlotsUsed % 7)) % 7;
   for (let day = 1; day <= suffixSlotsNeeded; day++) {
@@ -197,8 +193,7 @@ function renderEventsCalendar() {
   }
 }
 
-function openCalendarEventDetail(title, desc, date) {
-  // Use global news detail modal to show event specifications
+export function openCalendarEventDetail(title, desc, date) {
   const modalImg = document.getElementById('modal-news-image');
   if (modalImg) modalImg.style.backgroundImage = "url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=600')";
   

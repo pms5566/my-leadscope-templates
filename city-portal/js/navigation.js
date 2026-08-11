@@ -1,15 +1,17 @@
-// --- STATE MANAGEMENT VARS ---
-let activeJobId = jobsDb[0] ? jobsDb[0].id : null;
-let currentEventView = 'schedules'; // 'schedules' | 'calendar'
-let currentCalendarMonth = 7; // August
-let currentCalendarYear = 2026;
+import { jobsDb } from './data.js';
 
-// Wizard State (Contribute)
-let currentWizardType = ''; // 'news' | 'business' | 'job' | 'event'
-let currentWizardStep = 1;
+// --- STATE MANAGEMENT OBJECT ---
+export const state = {
+  activeJobId: jobsDb[0] ? jobsDb[0].id : null,
+  currentEventView: 'schedules', // 'schedules' | 'calendar'
+  currentCalendarMonth: 7, // August
+  currentCalendarYear: 2026,
+  currentWizardType: '', // 'news' | 'business' | 'job' | 'event'
+  currentWizardStep: 1
+};
 
 // --- PAGE NAVIGATION ENGINE (SPA) ---
-function navigateTo(pageId) {
+export function navigateTo(pageId) {
   // Hide all pages
   const views = document.querySelectorAll('.page-view');
   views.forEach(v => {
@@ -64,22 +66,22 @@ function navigateTo(pageId) {
 
   // Load section specific renders
   if (pageId === 'home') {
-    if (typeof renderHomeFeeds === 'function') renderHomeFeeds();
+    if (typeof window.renderHomeFeeds === 'function') window.renderHomeFeeds();
   } else if (pageId === 'news') {
-    if (typeof renderNewsFeed === 'function') renderNewsFeed();
-    if (typeof renderCommunityBuzz === 'function') renderCommunityBuzz();
+    if (typeof window.renderNewsFeed === 'function') window.renderNewsFeed();
+    if (typeof window.renderCommunityBuzz === 'function') window.renderCommunityBuzz();
   } else if (pageId === 'directory') {
-    if (typeof renderDirectoryGrid === 'function') renderDirectoryGrid();
+    if (typeof window.renderDirectoryGrid === 'function') window.renderDirectoryGrid();
   } else if (pageId === 'jobs') {
-    if (typeof renderJobFeed === 'function') renderJobFeed();
-    if (typeof renderJobDetails === 'function') renderJobDetails();
+    if (typeof window.renderJobFeed === 'function') window.renderJobFeed();
+    if (typeof window.renderJobDetails === 'function') window.renderJobDetails();
   } else if (pageId === 'events') {
-    if (typeof renderEvents === 'function') renderEvents();
+    if (typeof window.renderEvents === 'function') window.renderEvents();
   }
 }
 
 // --- HEADER THEME & SCROLL COORDINATION ---
-function updateHeaderStyle(activePage = null) {
+export function updateHeaderStyle(activePage = null) {
   const header = document.getElementById('main-header');
   const logoText = document.getElementById('header-logo-text');
   const nav = document.querySelector('nav');
@@ -116,10 +118,8 @@ window.addEventListener('scroll', () => {
   }
 
   if (scrollTop > lastScrollTop && scrollTop > 80) {
-    // Scroll Down - hide header
     header.classList.add('header-hidden');
   } else {
-    // Scroll Up - show header
     header.classList.remove('header-hidden');
   }
   

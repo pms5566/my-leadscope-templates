@@ -1,7 +1,10 @@
+import { newsDb, directoryDb, jobsDb, eventsDb } from './data.js';
+import { state, navigateTo } from './navigation.js';
+
 // --- USER SUBMISSION PORTAL LOGIC (Hireup 444 Wizard) ---
-function initiateSubmissionWizard(type) {
-  currentWizardType = type;
-  currentWizardStep = 1;
+export function initiateSubmissionWizard(type) {
+  state.currentWizardType = type;
+  state.currentWizardStep = 1;
   
   // Update UI Elements
   const selectionHub = document.getElementById('submit-selection-hub');
@@ -25,24 +28,23 @@ function initiateSubmissionWizard(type) {
   updateWizardProgressNodes();
 }
 
-function cancelSubmissionWizard() {
+export function cancelSubmissionWizard() {
   const wizard = document.getElementById('submission-wizard');
   if (wizard) wizard.classList.add('hidden');
 
   const selectionHub = document.getElementById('submit-selection-hub');
   if (selectionHub) selectionHub.classList.remove('hidden');
   
-  // Clean form
   const form = document.getElementById('submission-wizard-form');
   if (form) form.reset();
 }
 
-function openContributeTab(type) {
+export function openContributeTab(type) {
   navigateTo('contribute');
   initiateSubmissionWizard(type);
 }
 
-function drawWizardFields() {
+export function drawWizardFields() {
   const step1 = document.getElementById('wizard-step-1-fields');
   const step2 = document.getElementById('wizard-step-2-fields');
   
@@ -51,7 +53,7 @@ function drawWizardFields() {
   step1.innerHTML = '';
   step2.innerHTML = '';
   
-  if (currentWizardType === 'news') {
+  if (state.currentWizardType === 'news') {
     step1.innerHTML = `
       <div>
         <label class="block text-xs font-bold uppercase text-slate-500 mb-1.5">News Title / Headline</label>
@@ -81,7 +83,7 @@ function drawWizardFields() {
         <input type="url" id="form-news-image" placeholder="Paste an image address url..." class="w-full bg-slate-50 dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800 rounded py-2.5 px-4 focus:outline-none focus:border-brandGold">
       </div>
     `;
-  } else if (currentWizardType === 'business') {
+  } else if (state.currentWizardType === 'business') {
     step1.innerHTML = `
       <div>
         <label class="block text-xs font-bold uppercase text-slate-500 mb-1.5">Business / Shop Name</label>
@@ -137,7 +139,7 @@ function drawWizardFields() {
         <textarea id="form-biz-desc" rows="3" placeholder="Provide background about your shop and specialization..." class="w-full bg-slate-50 dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800 rounded py-2.5 px-4 focus:outline-none focus:border-brandGold" required></textarea>
       </div>
     `;
-  } else if (currentWizardType === 'job') {
+  } else if (state.currentWizardType === 'job') {
     step1.innerHTML = `
       <div>
         <label class="block text-xs font-bold uppercase text-slate-500 mb-1.5">Job Title</label>
@@ -180,7 +182,7 @@ function drawWizardFields() {
         <textarea id="form-job-desc" rows="4" placeholder="Mention key duties and who should apply..." class="w-full bg-slate-50 dark:bg-[#0f172a] border border-slate-200 dark:border-slate-800 rounded py-2.5 px-4 focus:outline-none focus:border-brandGold" required></textarea>
       </div>
     `;
-  } else if (currentWizardType === 'event') {
+  } else if (state.currentWizardType === 'event') {
     step1.innerHTML = `
       <div>
         <label class="block text-xs font-bold uppercase text-slate-500 mb-1.5">Event Name / Title</label>
@@ -219,7 +221,7 @@ function drawWizardFields() {
   }
 }
 
-function updateWizardProgressNodes() {
+export function updateWizardProgressNodes() {
   document.getElementById('step-node-1').className = "step-node w-8 h-8 rounded-full border flex items-center justify-center font-bold text-xs active";
   document.getElementById('step-node-2').className = "step-node w-8 h-8 rounded-full border flex items-center justify-center font-bold text-xs";
   document.getElementById('step-node-3').className = "step-node w-8 h-8 rounded-full border flex items-center justify-center font-bold text-xs";
@@ -227,22 +229,21 @@ function updateWizardProgressNodes() {
   document.getElementById('step-line-1').className = "flex-1 h-[2px] bg-slate-200 dark:bg-slate-700 mx-2";
   document.getElementById('step-line-2').className = "flex-1 h-[2px] bg-slate-200 dark:bg-slate-700 mx-2";
 
-  if (currentWizardStep >= 2) {
+  if (state.currentWizardStep >= 2) {
     document.getElementById('step-node-1').classList.add('completed');
     document.getElementById('step-node-2').classList.add('active');
     document.getElementById('step-line-1').classList.add('bg-brandGold', 'dark:bg-brandGold');
   }
-  if (currentWizardStep === 3) {
+  if (state.currentWizardStep === 3) {
     document.getElementById('step-node-2').classList.add('completed');
     document.getElementById('step-node-3').classList.add('active');
     document.getElementById('step-line-2').classList.add('bg-brandGold', 'dark:bg-brandGold');
   }
 }
 
-function navigateWizardStep(offset) {
-  // Simple validation for required fields
+export function navigateWizardStep(offset) {
   if (offset > 0) {
-    const activeCont = document.getElementById(`wizard-step-${currentWizardStep}-fields`);
+    const activeCont = document.getElementById(`wizard-step-${state.currentWizardStep}-fields`);
     if (activeCont) {
       const inputs = activeCont.querySelectorAll('input[required], textarea[required]');
       let isValid = true;
@@ -255,17 +256,15 @@ function navigateWizardStep(offset) {
         }
       });
 
-      if (!isValid) return; // Stop if form fields are empty
+      if (!isValid) return;
     }
   }
 
-  currentWizardStep += offset;
+  state.currentWizardStep += offset;
   
-  // Contain boundaries
-  if (currentWizardStep < 1) currentWizardStep = 1;
-  if (currentWizardStep > 3) currentWizardStep = 3;
+  if (state.currentWizardStep < 1) state.currentWizardStep = 1;
+  if (state.currentWizardStep > 3) state.currentWizardStep = 3;
 
-  // Toggle step wrappers
   const step1 = document.getElementById('wizard-step-1-fields');
   const step2 = document.getElementById('wizard-step-2-fields');
   const step3 = document.getElementById('wizard-step-3-fields');
@@ -274,24 +273,23 @@ function navigateWizardStep(offset) {
   if (step2) step2.classList.add('hidden');
   if (step3) step3.classList.add('hidden');
   
-  const currentStepFields = document.getElementById(`wizard-step-${currentWizardStep}-fields`);
+  const currentStepFields = document.getElementById(`wizard-step-${state.currentWizardStep}-fields`);
   if (currentStepFields) currentStepFields.classList.remove('hidden');
 
-  // Toggle Nav buttons
   const prevBtn = document.getElementById('btn-wizard-prev');
   const nextBtn = document.getElementById('btn-wizard-next');
   const submitBtn = document.getElementById('btn-wizard-submit');
 
   if (prevBtn && nextBtn && submitBtn) {
-    if (currentWizardStep === 1) {
+    if (state.currentWizardStep === 1) {
       prevBtn.classList.add('hidden');
       nextBtn.classList.remove('hidden');
       submitBtn.classList.add('hidden');
-    } else if (currentWizardStep === 2) {
+    } else if (state.currentWizardStep === 2) {
       prevBtn.classList.remove('hidden');
       nextBtn.classList.remove('hidden');
       submitBtn.classList.add('hidden');
-    } else if (currentWizardStep === 3) {
+    } else if (state.currentWizardStep === 3) {
       prevBtn.classList.remove('hidden');
       nextBtn.classList.add('hidden');
       submitBtn.classList.remove('hidden');
@@ -302,12 +300,12 @@ function navigateWizardStep(offset) {
   updateWizardProgressNodes();
 }
 
-function generateWizardCardPreview() {
+export function generateWizardCardPreview() {
   const container = document.getElementById('wizard-card-preview-container');
   if (!container) return;
   container.innerHTML = '';
 
-  if (currentWizardType === 'news') {
+  if (state.currentWizardType === 'news') {
     const title = document.getElementById('form-news-title').value.trim();
     const cat = document.getElementById('form-news-cat').value;
     const summary = document.getElementById('form-news-summary').value.trim();
@@ -329,7 +327,7 @@ function generateWizardCardPreview() {
         </div>
       </article>
     `;
-  } else if (currentWizardType === 'business') {
+  } else if (state.currentWizardType === 'business') {
     const name = document.getElementById('form-biz-name').value.trim();
     const cat = document.getElementById('form-biz-cat').value;
     const ward = document.getElementById('form-biz-ward').value;
@@ -370,7 +368,7 @@ function generateWizardCardPreview() {
         </div>
       </div>
     `;
-  } else if (currentWizardType === 'job') {
+  } else if (state.currentWizardType === 'job') {
     const title = document.getElementById('form-job-title').value.trim();
     const company = document.getElementById('form-job-company').value.trim();
     const type = document.getElementById('form-job-type').value;
@@ -400,7 +398,7 @@ function generateWizardCardPreview() {
         </div>
       </div>
     `;
-  } else if (currentWizardType === 'event') {
+  } else if (state.currentWizardType === 'event') {
     const title = document.getElementById('form-event-title').value.trim();
     const cat = document.getElementById('form-event-cat').value;
     const dateInput = document.getElementById('form-event-date').value;
@@ -437,10 +435,10 @@ function generateWizardCardPreview() {
   }
 }
 
-function handleWizardSubmit(event) {
+export function handleWizardSubmit(event) {
   event.preventDefault();
 
-  if (currentWizardType === 'news') {
+  if (state.currentWizardType === 'news') {
     const title = document.getElementById('form-news-title').value.trim();
     const cat = document.getElementById('form-news-cat').value;
     const summary = document.getElementById('form-news-summary').value.trim();
@@ -462,7 +460,7 @@ function handleWizardSubmit(event) {
     newsDb.unshift(newObj);
     localStorage.setItem('myrajpura_news_v4', JSON.stringify(newsDb));
     navigateTo('news');
-  } else if (currentWizardType === 'business') {
+  } else if (state.currentWizardType === 'business') {
     const name = document.getElementById('form-biz-name').value.trim();
     const cat = document.getElementById('form-biz-cat').value;
     const ward = document.getElementById('form-biz-ward').value;
@@ -495,7 +493,7 @@ function handleWizardSubmit(event) {
     directoryDb.unshift(newObj);
     localStorage.setItem('myrajpura_directory_v4', JSON.stringify(directoryDb));
     navigateTo('directory');
-  } else if (currentWizardType === 'job') {
+  } else if (state.currentWizardType === 'job') {
     const title = document.getElementById('form-job-title').value.trim();
     const company = document.getElementById('form-job-company').value.trim();
     const type = document.getElementById('form-job-type').value;
@@ -520,10 +518,10 @@ function handleWizardSubmit(event) {
     };
 
     jobsDb.unshift(newObj);
-    activeJobId = newObj.id;
+    state.activeJobId = newObj.id;
     localStorage.setItem('myrajpura_jobs_v4', JSON.stringify(jobsDb));
     navigateTo('jobs');
-  } else if (currentWizardType === 'event') {
+  } else if (state.currentWizardType === 'event') {
     const title = document.getElementById('form-event-title').value.trim();
     const cat = document.getElementById('form-event-cat').value;
     const dateInput = document.getElementById('form-event-date').value;
@@ -534,7 +532,6 @@ function handleWizardSubmit(event) {
     const d = new Date(dateInput);
     const dayVal = d.getDate();
     
-    // Generate arrays of days
     let dayArr = [];
     for (let i = 0; i < duration; i++) {
       dayArr.push(dayVal + i);
@@ -557,7 +554,6 @@ function handleWizardSubmit(event) {
     navigateTo('events');
   }
 
-  // Clean and hide wizard
   const wizard = document.getElementById('submission-wizard');
   if (wizard) wizard.classList.add('hidden');
   
@@ -567,6 +563,5 @@ function handleWizardSubmit(event) {
   const form = document.getElementById('submission-wizard-form');
   if (form) form.reset();
   
-  // Alert success
   alert("Thank you! Your community listing was submitted successfully and is now active.");
 }

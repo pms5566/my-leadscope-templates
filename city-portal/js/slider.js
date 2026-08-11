@@ -1,5 +1,5 @@
 // --- BEFORE/AFTER SLIDER LOGIC ---
-function initBeforeAfterSlider() {
+export function initBeforeAfterSlider() {
   const container = document.getElementById('before-after-slider');
   const handle = document.getElementById('slider-handle');
   const overlay = document.getElementById('slider-overlay');
@@ -18,7 +18,6 @@ function initBeforeAfterSlider() {
     handle.style.left = `${position}%`;
     overlay.style.width = `${position}%`;
     
-    // Adjust nested image width overlay to keep aspect ratio scaling
     const innerImg = overlay.querySelector('img');
     if (innerImg) {
       innerImg.style.width = `${rect.width}px`;
@@ -56,7 +55,7 @@ function initBeforeAfterSlider() {
 }
 
 // --- HERO SLIDESHOW MARQUEE LOGIC ---
-function initHeroSlideshow() {
+export function initHeroSlideshow() {
   const slides = document.querySelectorAll('.hero-slide');
   const bgSlides = document.querySelectorAll('.hero-bg-slide');
   if (slides.length === 0) return;
@@ -82,5 +81,5 @@ function initHeroSlideshow() {
       bgSlides[currentSlide].classList.remove('opacity-0');
       bgSlides[currentSlide].classList.add('opacity-100');
     }
-  }, 4500); // Transition every 4.5 seconds
+  }, 4500);
 }

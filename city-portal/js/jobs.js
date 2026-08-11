@@ -1,5 +1,8 @@
+import { jobsDb } from './data.js';
+import { state } from './navigation.js';
+
 // --- JOB BOARD LOGIC (Yoda Split-Pane) ---
-function renderJobFeed() {
+export function renderJobFeed() {
   const container = document.getElementById('job-feed-list');
   if (!container) return;
 
@@ -47,11 +50,11 @@ function renderJobFeed() {
 
   filtered.forEach((job, index) => {
     // If no active job is selected, select the first match
-    if (index === 0 && (!activeJobId || !filtered.some(j => j.id === activeJobId))) {
-      activeJobId = job.id;
+    if (index === 0 && (!state.activeJobId || !filtered.some(j => j.id === state.activeJobId))) {
+      state.activeJobId = job.id;
     }
 
-    const isActive = job.id === activeJobId;
+    const isActive = job.id === state.activeJobId;
     const cardActiveBorder = isActive ? 'border-brandGold ring-1 ring-brandGold' : 'border-slate-200 dark:border-slate-800';
     const cardActiveBg = isActive ? 'bg-slate-50 dark:bg-[#2e3b4e]/30' : 'bg-white dark:bg-[#1e293b]';
 
@@ -84,22 +87,22 @@ function renderJobFeed() {
   });
 }
 
-function setActiveJob(jobId) {
-  activeJobId = jobId;
+export function setActiveJob(jobId) {
+  state.activeJobId = jobId;
   renderJobFeed();
   renderJobDetails();
 }
 
-function renderJobDetails() {
+export function renderJobDetails() {
   const detailsPane = document.getElementById('job-details-pane');
   if (!detailsPane) return;
 
-  const job = jobsDb.find(j => j.id === activeJobId);
+  const job = jobsDb.find(j => j.id === state.activeJobId);
 
   if (!job) {
     detailsPane.innerHTML = `
       <div class="flex-1 flex flex-col items-center justify-center text-slate-400 text-center">
-        <i class="fa-solid fa-briefcase text-4xl mb-3 text-slate-350"></i>
+        <i class="fa-solid fa-briefcase text-4xl mb-3 text-slate-355"></i>
         <p class="text-sm">Please select a job vacancy from the listing feed to view specifications.</p>
       </div>
     `;
@@ -176,12 +179,12 @@ function renderJobDetails() {
   `;
 }
 
-function applyJobFilters() {
+export function applyJobFilters() {
   renderJobFeed();
   renderJobDetails();
 }
 
-function resetJobFilters() {
+export function resetJobFilters() {
   const searchInput = document.getElementById('job-search-input');
   if (searchInput) searchInput.value = '';
   document.querySelectorAll('.job-filter-checkbox').forEach(c => c.checked = false);
@@ -190,8 +193,7 @@ function resetJobFilters() {
   renderJobDetails();
 }
 
-// Drawer animations
-function toggleJobDrawer(open) {
+export function toggleJobDrawer(open) {
   const drawer = document.getElementById('job-post-drawer');
   const panel = document.getElementById('job-drawer-panel');
   
@@ -210,7 +212,7 @@ function toggleJobDrawer(open) {
   }
 }
 
-function submitJobDrawer(event) {
+export function submitJobDrawer(event) {
   event.preventDefault();
   
   const company = document.getElementById('drawer-job-company').value.trim();
@@ -243,16 +245,12 @@ function submitJobDrawer(event) {
     phone: phone
   };
 
-  jobsDb.unshift(newJob); // Add at top
-  activeJobId = newJob.id;
+  jobsDb.unshift(newJob);
+  state.activeJobId = newJob.id;
   
-  // Clean form
   document.getElementById('drawer-job-form').reset();
-  
-  // Close drawer
   toggleJobDrawer(false);
   
-  // Render
   renderJobFeed();
   renderJobDetails();
 }
