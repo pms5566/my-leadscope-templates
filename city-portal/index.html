@@ -97,7 +97,7 @@
     <!-- 1. HOME VIEW -->
     <section id="home-view" class="page-view active">
       <!-- Cinematic Hero Section with Framed Slideshow (inspired by d24f16...) -->
-      <div class="relative w-full bg-[#132c4c] dark:bg-[#0b192e] py-16 md:py-24 border-b border-slate-800 overflow-hidden">
+      <div class="hero-section-container relative w-full bg-[#132c4c] dark:bg-[#0b192e] py-16 md:py-24 border-b border-slate-800 overflow-hidden">
         <!-- Full-Bleed Blurred Slideshow Background -->
         <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
           <div class="hero-bg-slide absolute inset-0 transition-opacity duration-1000 opacity-100 bg-cover bg-center filter blur-[60px] opacity-[0.18] scale-110" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/9/91/Gateway_of_Punjab-Rajpura.jpg');" data-bg-slide="0"></div>
@@ -141,7 +141,7 @@
           </div>
           
           <!-- Right Column: Framed Image Slideshow -->
-          <div class="lg:col-span-5 flex justify-center">
+          <div class="hidden lg:flex lg:col-span-5 justify-center">
             <div class="relative w-full max-w-md aspect-[4/3] bg-black/50 backdrop-blur-md border-2 border-slate-700/60 rounded-2xl shadow-2xl overflow-hidden pulse-glow">
               <!-- Slideshow container -->
               <div class="absolute inset-0" id="hero-slideshow">

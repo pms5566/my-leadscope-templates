@@ -498,3 +498,15 @@ footer details summary::-webkit-details-marker {
   }
 }
 
+/* Dynamic Hero Viewport Height on Mobile */
+@media (max-width: 1023px) {
+  .hero-section-container {
+    height: calc(100dvh - 128px); /* minus top header (64px) and bottom nav (64px) */
+    min-height: 520px;
+    display: flex;
+    align-items: center;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+}
+
