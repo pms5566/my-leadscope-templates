@@ -93,58 +93,36 @@ export function updateHeaderStyle(activePage = null) {
   const currentPage = activePage || state.currentPage;
   const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
+  // Preserve header visibility transition state
+  const isHidden = header.classList.contains('header-hidden');
+
   if (currentPage === 'home' && scrollTop <= 30) {
-    // Transparent style at top of Homepage
-    header.classList.remove('bg-white', 'dark:bg-[#1e293b]', 'bg-[#0f172a]/95', 'dark:bg-[#0f172a]/95', 'shadow-md', 'border-slate-200', 'dark:border-slate-800', 'py-4');
-    header.classList.add('bg-transparent', 'border-transparent', 'shadow-none', 'py-6');
+    // 1. Transparent style at top of Homepage
+    header.className = `fixed top-0 left-0 right-0 z-50 bg-transparent border-b border-transparent transition-all duration-300 py-6${isHidden ? ' header-hidden' : ''}`;
     
-    logoText.classList.remove('text-[#0f172a]', 'dark:text-white');
-    logoText.classList.add('text-white');
-    if (logoSub) {
-      logoSub.classList.remove('text-slate-500', 'dark:text-slate-400');
-      logoSub.classList.add('text-slate-300');
-    }
-    
-    nav.classList.remove('text-slate-700', 'dark:text-slate-300');
-    nav.classList.add('text-white/90');
-    
-    hamburger.classList.remove('text-[#0f172a]', 'dark:text-white');
-    hamburger.classList.add('text-white');
+    logoText.className = "text-lg font-black tracking-widest font-headings leading-none text-white transition-colors";
+    if (logoSub) logoSub.className = "text-[9px] tracking-wider uppercase font-semibold mt-1 text-slate-300 transition-colors";
+    nav.className = "hidden lg:flex items-center gap-8 text-sm font-semibold tracking-wide uppercase text-white/90";
+    hamburger.className = "lg:hidden flex flex-col justify-between w-6 h-4 text-white";
   } else {
-    // Solid styling on scroll or on other sub-pages
-    header.classList.add('shadow-md', 'py-4');
-    header.classList.remove('bg-transparent', 'border-transparent', 'shadow-none', 'py-5', 'py-6');
+    // 2. Solid styling on scroll or on other sub-pages
+    const isDark = document.documentElement.classList.contains('dark');
     
-    if (document.documentElement.classList.contains('dark')) {
-      header.classList.add('bg-[#0f172a]/95', 'dark:bg-[#0f172a]/95', 'border-slate-800');
-      header.classList.remove('bg-white', 'border-slate-200');
+    if (isDark) {
+      header.className = `fixed top-0 left-0 right-0 z-50 shadow-md border-b bg-[#0f172a]/95 dark:bg-[#0f172a]/95 border-slate-800 transition-all duration-300 py-4${isHidden ? ' header-hidden' : ''}`;
       
-      logoText.classList.remove('text-[#0f172a]', 'text-white');
-      logoText.classList.add('text-white');
-      if (logoSub) {
-        logoSub.classList.remove('text-slate-300', 'text-slate-500');
-        logoSub.classList.add('text-slate-400');
-      }
-      
-      nav.classList.remove('text-slate-700', 'text-white/90');
-      nav.classList.add('text-slate-300');
+      logoText.className = "text-lg font-black tracking-widest font-headings leading-none text-white transition-colors";
+      if (logoSub) logoSub.className = "text-[9px] tracking-wider uppercase font-semibold mt-1 text-slate-400 transition-colors";
+      nav.className = "hidden lg:flex items-center gap-8 text-sm font-semibold tracking-wide uppercase text-slate-300";
+      hamburger.className = "lg:hidden flex flex-col justify-between w-6 h-4 text-white";
     } else {
-      header.classList.add('bg-white', 'border-slate-200');
-      header.classList.remove('bg-[#0f172a]/95', 'dark:bg-[#0f172a]/95', 'border-slate-800');
+      header.className = `fixed top-0 left-0 right-0 z-50 shadow-md border-b bg-white border-slate-200 transition-all duration-300 py-4${isHidden ? ' header-hidden' : ''}`;
       
-      logoText.classList.remove('text-white', 'dark:text-white');
-      logoText.classList.add('text-[#0f172a]');
-      if (logoSub) {
-        logoSub.classList.remove('text-slate-300', 'dark:text-slate-400');
-        logoSub.classList.add('text-slate-500');
-      }
-      
-      nav.classList.remove('text-white/90', 'dark:text-slate-300');
-      nav.classList.add('text-slate-700');
+      logoText.className = "text-lg font-black tracking-widest font-headings leading-none text-[#0f172a] transition-colors";
+      if (logoSub) logoSub.className = "text-[9px] tracking-wider uppercase font-semibold mt-1 text-slate-500 transition-colors";
+      nav.className = "hidden lg:flex items-center gap-8 text-sm font-semibold tracking-wide uppercase text-slate-700";
+      hamburger.className = "lg:hidden flex flex-col justify-between w-6 h-4 text-[#0f172a]";
     }
-    
-    hamburger.classList.remove('text-white');
-    hamburger.classList.add('text-[#0f172a]', 'dark:text-white');
   }
 }
 
