@@ -548,3 +548,16 @@ footer details summary::-webkit-details-marker {
   }
 }
 
+/* Desktop-only full screen hero */
+@media (min-width: 1024px) {
+  .hero-section-container {
+    height: 100dvh;
+    min-height: 650px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+}
+
